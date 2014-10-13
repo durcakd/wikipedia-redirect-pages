@@ -2,6 +2,8 @@ package mapReduce.hadoop;
 
 import java.io.IOException;
 
+import mapReduce.parse.WikiRedirectParser;
+
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
@@ -15,9 +17,16 @@ public class WikiRedirectMapper extends Mapper<LongWritable, Text, Text, Text> {
 	
 	@Override
 	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-		log.info("******************************************************");
-		String str = value.toString();//.replaceAll("\n", "++");
-		log.info("    " + str);
-		context.write(new Text("kluc"), value);
+		WikiRedirectParser parser = new WikiRedirectParser();
+		
+		String output = parser.parsePage( value.toString());
+		String title = parser.getTitle();
+		if (null != title) {
+			Text newValue = new Text( output);
+			Text newKey   = new Text( title);
+			//log.info(">>>*****************************");
+			context.write( newKey, newValue);
+		}	
 	}
+	
 }
