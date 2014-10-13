@@ -18,7 +18,9 @@ public class WikiRedirectParser {
 	public static final String NAMELINK  = "\\[\\[[^:\\]\\[]*?\\]\\]"; 
 	public static final String TABLE     = "\\{[^\\{]*?\\}";
 	public static final String SIMPLELINK  = "\\[[^\\[]*?\\]";
-
+	public static final String DEL      = "XXXXXX";
+	public static final String SUBDEL   = "AAAA";
+	
 	public static Pattern tittlePattern	    = Pattern.compile( TITLE,     Pattern.DOTALL | Pattern.MULTILINE);
 	public static Pattern textPattern       = Pattern.compile( TEXT,      Pattern.DOTALL | Pattern.MULTILINE);
 	public static Pattern linkPattern       = Pattern.compile( LINK );
@@ -27,10 +29,10 @@ public class WikiRedirectParser {
 	public static Pattern simpleLinkPattern = Pattern.compile( SIMPLELINK );
 	public static Pattern tablePattern      = Pattern.compile( TABLE,     Pattern.DOTALL | Pattern.MULTILINE);
 
-	private String title; 
+	private String title = null; 
 
 	public String getTitle() {
-		return title = null;
+		return title;
 	}
 
 	public String parsePage(String page) {
@@ -61,12 +63,13 @@ public class WikiRedirectParser {
 							if (1 == redirects.length) {
 								redirect = title;
 								title = redirects[0];
+								text = " ";
 								//log.info("REDIRECT: " + redirect);
 								
 							} else if (2 == redirects.length) {
-								redirect = title;
 								title = redirects[0];
 								subredirect = redirects[1];
+								text = " ";
 								//log.info("REDIRECT: " + redirect);								
 								//log.info("REDIRECT title:    " + redirect);
 								//log.info("REDIRECT subtitle: " + subredirect);
@@ -94,9 +97,9 @@ public class WikiRedirectParser {
 			}	
 			StringBuffer resBuf = new StringBuffer();		
 			resBuf.append(redirect);
-			resBuf.append(";||;");
+			resBuf.append( WikiRedirectParser.DEL);
 			resBuf.append(subredirect);
-			resBuf.append(";||;");
+			resBuf.append( WikiRedirectParser.DEL);
 			resBuf.append(text);
 			//log.info(resBuf.toString());
 			return resBuf.toString();
