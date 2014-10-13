@@ -24,9 +24,9 @@ public class WikiRedirectMapper extends Mapper<LongWritable, Text, Text, Text> {
 		if (null != title) {
 			Text newValue = new Text( output);
 			Text newKey   = new Text( title);
-			log.info(">>>****************************************");
-			log.info(">>>KEY:    " + title);
-			log.info(">>>VALUE : " + output);
+			//log.info(">>>****************************************");
+			//log.info(">>>KEY:    " + title);
+			//log.info(">>>VALUE : " + output);
 			
 			context.write( newKey, newValue);
 		}	

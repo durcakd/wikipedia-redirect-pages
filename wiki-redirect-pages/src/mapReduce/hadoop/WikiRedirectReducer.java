@@ -20,14 +20,14 @@ public class WikiRedirectReducer extends Reducer<Text, Text, Text, Text> {
 		String text = "";
 
 		for (Text value : values) {
-			log.info("..................");
-			log.info("KEY:   " + key.toString());
-			log.info("VALUE: " + value.toString());
+			//log.info("..................");
+			//log.info("KEY:   " + key.toString());
+			//log.info("VALUE: " + value.toString());
 			String[] mainSplit = value.toString().split(WikiRedirectParser.DEL);
 			
-			log.info("REDIRECT    " + mainSplit[0]);
-			log.info("SUBREDIRECT " + mainSplit[1]);
-			log.info("TEXT        " + mainSplit[2]);
+			//log.info("REDIRECT    " + mainSplit[0]);
+			//log.info("SUBREDIRECT " + mainSplit[1]);
+			//log.info("TEXT        " + mainSplit[2]);
 			if (! mainSplit[0].trim().isEmpty()){
 				reds = reds + WikiRedirectParser.SUBDEL + mainSplit[0];
 			
@@ -36,21 +36,21 @@ public class WikiRedirectReducer extends Reducer<Text, Text, Text, Text> {
 				subs = subs + WikiRedirectParser.SUBDEL + mainSplit[1];
 			}
 
-			text = text + mainSplit[2];
+			text = text + mainSplit[2].replaceFirst(WikiRedirectParser.DOCDEL, "");
 		}
 
 
 		if ( !text.trim().isEmpty() && !subs.trim().isEmpty()) {
 			WikiRedirectParser parser = new WikiRedirectParser();
 
-			log.info("SUBS: " + subs);
+			//log.info("SUBS: " + subs);
 			String[] subsArray = subs.split(WikiRedirectParser.SUBDEL);
 			for (String sub : subsArray ) {
 				if (!sub.trim().isEmpty()){
 					String subText = parser.findSubtext(text, sub);
-					log.info(">>>===========================================");
-					log.info(sub);
-					log.info(subText);
+					//log.info(">>>===========================================");
+					//log.info(sub);
+					//log.info(subText);
 					
 					StringBuffer subBuf = new StringBuffer();		
 					subBuf.append(" ");
@@ -58,6 +58,7 @@ public class WikiRedirectReducer extends Reducer<Text, Text, Text, Text> {
 					subBuf.append(" ");
 					subBuf.append( WikiRedirectParser.DEL);
 					subBuf.append(subText);
+					subBuf.append( WikiRedirectParser.DOCDEL);
 					subText = subBuf.toString();
 					
 					
@@ -73,12 +74,13 @@ public class WikiRedirectReducer extends Reducer<Text, Text, Text, Text> {
 		resBuf.append(subs);
 		resBuf.append( WikiRedirectParser.DEL);
 		resBuf.append(text);
-		log.error(resBuf.toString());
+		resBuf.append( WikiRedirectParser.DOCDEL);
+		//log.error(resBuf.toString());
 		Text reducedValue = new Text( resBuf.toString());
 
-		log.info(">>>===========================================");
-		log.info("KEY:   " + key.toString());
-		log.info("VALUE: " + reducedValue.toString());
+		//log.info(">>>===========================================");
+		//log.info("KEY:   " + key.toString());
+		//log.info("VALUE: " + reducedValue.toString());
 		context.write(key, reducedValue);
 
 

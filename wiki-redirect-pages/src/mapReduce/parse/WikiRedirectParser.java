@@ -20,6 +20,7 @@ public class WikiRedirectParser {
 	public static final String SIMPLELINK  = "\\[[^\\[]*?\\]";
 	public static final String DEL      = "XXXXXX";
 	public static final String SUBDEL   = "AAAA";
+	public static final String DOCDEL   = ">>>>>>>>>>>>>>>>>>>>>>>";
 	
 	public static Pattern tittlePattern	    = Pattern.compile( TITLE,     Pattern.DOTALL | Pattern.MULTILINE);
 	public static Pattern textPattern       = Pattern.compile( TEXT,      Pattern.DOTALL | Pattern.MULTILINE);
@@ -101,6 +102,7 @@ public class WikiRedirectParser {
 			resBuf.append(subredirect);
 			resBuf.append( WikiRedirectParser.DEL);
 			resBuf.append(text);
+			resBuf.append( WikiRedirectParser.DOCDEL);
 			//log.info(resBuf.toString());
 			return resBuf.toString();
 	}
