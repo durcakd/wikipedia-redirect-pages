@@ -19,7 +19,7 @@ public class WikiRedirectMapper extends Mapper<LongWritable, Text, Text, Text> {
 	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
 		WikiRedirectParser parser = new WikiRedirectParser();
 		
-		String output = parser.parsePage( value.toString());
+		String output = parser.parse( value.toString());
 		String title = parser.getTitle();
 		if (null != title) {
 			Text newValue = new Text( output);
