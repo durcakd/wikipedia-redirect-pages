@@ -13,11 +13,19 @@ public class WikiRedirectParser {
 	public static final String PAGE      = "";
 	public static final String TITLE     = "<title>.*?</title>";
 	public static final String TEXT      = "<text xml:space=\"preserve\">.*</text>";
-	public static final String LINK      = "\\[\\[.*?\\]\\]";
-	public static final String INPUTLINK = "\\[\\[[^\\]\\[]*?:[^\\]\\[]*?\\]\\]";
-	public static final String NAMELINK  = "\\[\\[[^:\\]\\[]*?\\]\\]"; 
+
 	public static final String TABLE     = "\\{[^\\{]*?\\}";
+
+	public static final String LINK      = "\\[\\[.*?\\]\\]";   					// [[*]]
+	public static final String INPUTLINK = "\\[\\[[^\\]\\[]*?:[^\\]\\[]*?\\]\\]";   // [[  -[] +:+ -[] ]]  nerekurzivna
+	public static final String NAMELINK  = "\\[\\[[^:\\]\\[]*?\\]\\]";              // [[  -:[] +  ]]    nerekurzivna
+	public static final String NORECLINK  = "\\[\\[[^\\]\\[]*?\\]\\]";              // [[  -[] +  ]]    nerekurzivna
+
+
+
 	public static final String SIMPLELINK  = "\\[[^\\[]*?\\]";
+
+
 	public static final String DEL      = "XXXXXX";
 	public static final String SUBDEL   = "AAAA";
 	public static final String DOCDEL   = ">>>>>>>>>>>>>>>>>>>>>>>";
@@ -27,6 +35,8 @@ public class WikiRedirectParser {
 	public static Pattern linkPattern       = Pattern.compile( LINK );
 	public static Pattern inputLinkPattern  = Pattern.compile( INPUTLINK );
 	public static Pattern nameLinkPattern   = Pattern.compile( NAMELINK );
+	public static Pattern noRecPattern   	= Pattern.compile( NORECLINK );
+
 	public static Pattern simpleLinkPattern = Pattern.compile( SIMPLELINK );
 	public static Pattern tablePattern      = Pattern.compile( TABLE,     Pattern.DOTALL | Pattern.MULTILINE);
 
@@ -40,12 +50,12 @@ public class WikiRedirectParser {
 	public String parse(String page) {
 		return parse(page, Boolean.FALSE);
 	}
-	
+
 	public String parse(String page, Boolean print) {
 		title = null;
 		try {
 			return parsePage(page, print);
-		
+
 		}catch (Exception e) {	
 			if ( !print){
 				log.error( "PARSE ERROR \n:",e);
@@ -55,18 +65,18 @@ public class WikiRedirectParser {
 		}
 		return null;
 	}
-	
-	
+
+
 	public String parsePage(String page, Boolean print) {
 		shoudPrintl = print;
 		String redirect = " ";
 		String subredirect = " ";
 		String text = " ";
-		
+
 		info("*******************************************************");
 		info(page); info( "-------------------------");
-				
-		
+
+
 		Matcher tittleMatcher = tittlePattern.matcher(page);
 		if (tittleMatcher.find()) {
 			title = tittleMatcher.group().replaceAll(ELEMENT, "").trim();
@@ -105,11 +115,12 @@ public class WikiRedirectParser {
 				}  
 				else {   // not REDIRECT
 					text = text.replaceAll("'''","").replaceAll("''","");
-					//info( "TEXT NOT BOLD : " + text);
-					text = parseLinks( text);
-					//info( "TEXT NOT LINKS : " + text);
+					
 					text = parseTable( text);
-					//info( "TEXT NOT TABLE : " + text);
+					
+					text = parseLinks( text);
+					
+					
 					text = parseSimpleLinks(text);
 					text = text.replaceAll("[\n]+", "\n");
 					text = text.replaceAll("[\n][ ]*==", "\n\n==");
@@ -139,23 +150,47 @@ public class WikiRedirectParser {
 	protected String parseLinks(String text) {
 		Boolean match = Boolean.TRUE; 
 		while (match) {
-			Matcher inputMatcher = inputLinkPattern.matcher(text);
-			match = inputMatcher.find() ? Boolean.TRUE : Boolean.FALSE;
-			text = inputMatcher.replaceAll("");
-
-			Matcher nameMatcher = nameLinkPattern.matcher(text);
+			match = Boolean.FALSE;
+			info("LINK CYCLE IN \n: " );//+ text);
 			StringBuffer sb = new StringBuffer();
-			while (nameMatcher.find()) {
+			Matcher linkMatcher = noRecPattern.matcher(text);
+
+			while (linkMatcher.find()) {
+				//if(match) info("NOREC: " + text);
 				match = Boolean.TRUE;
-				String replacement = nameMatcher.group();
-				replacement = replacement.substring( replacement.lastIndexOf('|')+1).replaceAll("[\\[\\]]","");
-				nameMatcher.appendReplacement(sb, replacement);
-				info(nameMatcher.group() + " --->> " + replacement);
+				String replacement = processLink( linkMatcher.group());
+				linkMatcher.appendReplacement(sb, replacement);
+				info(linkMatcher.group() + " --->> " + replacement);
 			}
-			nameMatcher.appendTail(sb);
-			text = sb.toString();	
+			if(match ){
+				linkMatcher.appendTail(sb);
+				text = sb.toString();	
+			}
+			info("LINK CYCLE OUT: \n" );//+ text);
+
 		}
 		return text;
+	}
+
+	protected String processLink(String input) {
+		//info(" >>>> INPUT " + input);
+		input = input.replaceAll("[\\[\\]]","");
+		if( 1 < input.length()) {
+			
+			// :aaa -> aaa
+			if (input.startsWith(":")){     
+				input = input.substring(1);
+			}
+
+			// aaa:bbb| -> bbb
+			if ( input.endsWith("|")) {		
+				input = input.substring(input.lastIndexOf(':')+1, input.length()-1);
+			}
+			
+			// aaa|bbb -> bbb
+			input = input.substring(input.lastIndexOf('|')+1);    
+		}
+		return input;
 	}
 
 
@@ -197,18 +232,18 @@ public class WikiRedirectParser {
 		return "";
 	}
 
-	
-	
+
+
 	protected void info(String msg) {
 		if (shoudPrintl)
 			log.info(msg);
 	}
-	
+
 	protected void error(String msg, Throwable t) {
 		if (shoudPrintl)
 			log.error(msg, t);
 	}
-	
+
 	protected void error(String msg) {
 		if (shoudPrintl)
 			log.error(msg);
