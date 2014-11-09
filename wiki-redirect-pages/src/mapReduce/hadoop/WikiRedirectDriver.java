@@ -2,7 +2,6 @@ package mapReduce.hadoop;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
-import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
@@ -19,7 +18,6 @@ public class WikiRedirectDriver extends Configured implements Tool{
 	
 	public int run(String[] args) throws Exception
 	{
-		log.info("ARGS = " + args.length + "   " + args[0] + "   " + args[1]);
 		if(args.length !=2) {
 			System.err.println("Usage: MaxTemperatureDriver <input path> <outputpath>");
 			System.exit(-1);

@@ -21,16 +21,10 @@ public class WikiRedirectReducer extends Reducer<Text, Text, Text, Text> {
 
 		for (Text value : values) {
 			//log.info("..................");
-			//log.info("KEY:   " + key.toString());
-			//log.info("VALUE: " + value.toString());
 			String[] mainSplit = value.toString().split(WikiRedirectParser.DEL);
 			
-			//log.info("REDIRECT    " + mainSplit[0]);
-			//log.info("SUBREDIRECT " + mainSplit[1]);
-			//log.info("TEXT        " + mainSplit[2]);
 			if (! mainSplit[0].trim().isEmpty()){
 				reds = reds + WikiRedirectParser.SUBDEL + mainSplit[0];
-			
 			}
 			if (! mainSplit[1].trim().isEmpty()){	
 				subs = subs + WikiRedirectParser.SUBDEL + mainSplit[1];
@@ -61,7 +55,6 @@ public class WikiRedirectReducer extends Reducer<Text, Text, Text, Text> {
 					subBuf.append( WikiRedirectParser.DOCDEL);
 					subText = subBuf.toString();
 					
-					
 					context.write( new Text(sub), new Text(subText));
 				}
 			}
@@ -78,9 +71,6 @@ public class WikiRedirectReducer extends Reducer<Text, Text, Text, Text> {
 		//log.error(resBuf.toString());
 		Text reducedValue = new Text( resBuf.toString());
 
-		//log.info(">>>===========================================");
-		//log.info("KEY:   " + key.toString());
-		//log.info("VALUE: " + reducedValue.toString());
 		context.write(key, reducedValue);
 
 
