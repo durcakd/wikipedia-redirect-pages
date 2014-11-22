@@ -4,5 +4,36 @@
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/hadoop"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/lucene"/>
+	<classpathentry kind="lib" path="miglayout15-swing.jar" sourcepath="miglayout-src.zip"/>
+	<classpathentry kind="lib" path="forms-1.3.0.jar" sourcepath="forms-1.3.0-src.zip"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/languagetool-core.jar"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/tika-core.jar"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/segment.jar"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/opennlp-tools.jar"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/opennlp-tokenize-models.jar"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/opennlp-postag-models.jar"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/opennlp-maxent.jar"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/opennlp-chunk-models.jar"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/morfologik-tools.jar"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/morfologik-stemming.jar"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/morfologik-speller.jar"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/morfologik-polish.jar"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/morfologik-fsa.jar"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/lucene-gosen-ipadic.jar"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/lucene-core.jar"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/languagetool-gui-commons.jar"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/languagetool-core-tests.jar"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/jwordsplitter.jar"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/junit.jar"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/jna.jar"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/ictclas4j.jar"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/hunspell-native-libs.jar"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/hppc.jar"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/hamcrest-core.jar"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/commons-logging.jar"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/commons-lang.jar"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/commons-cli.jar"/>
+	<classpathentry kind="lib" path="/home/durcak/Downloads/LanguageTool-2.7/libs/cjftransform.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
