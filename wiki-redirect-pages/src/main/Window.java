@@ -2,6 +2,8 @@ package main;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -10,28 +12,56 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.JComboBox;
 
 public class Window extends JFrame {
 
 	private JTextField queryTF;
-	private JButton searchBT;
+	private JComboBox<String> queryCB;
 	private JRadioButton titleRB;
 	private JRadioButton textRB;
+	private JButton searchBT;
 	private JButton parseBT;
 	private JButton indexBT;
 	private JTextArea textArea;
 	private JTable table;
+
+	public void addSearchBTListener(ActionListener searchBTListener) {
+		searchBT.addActionListener(searchBTListener);
+	}
+	public void addParseBTListener(ActionListener parseBTListener) {
+		parseBT.addActionListener(parseBTListener);
+	}
+	public void addIndexBTListener(ActionListener indexBTListener) {
+		indexBT.addActionListener(indexBTListener);
+	}
+	public void addTitleRBListener(ActionListener titleRBListener) {
+		titleRB.addActionListener(titleRBListener);
+	}
+	public void addTextRBListener(ActionListener textRBListener) {
+		textRB.addActionListener(textRBListener);
+	}
+	public void addTableSelectionListener(
+			ListSelectionListener selectionListener) {
+		table.getSelectionModel().addListSelectionListener(selectionListener);
+	}
+	
+	/*public void addListener(ActionListener Listener) {
+		.addActionListener(Listener);
+	}*/
 
 	/**
 	 * Create the frame.
 	 */
 	public Window() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 829, 567);
+		setBounds(100, 100, 800, 600);
 		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -51,10 +81,17 @@ public class Window extends JFrame {
 
 		// control 1
 		queryTF = new JTextField();
-		queryTF.setColumns(45);
+		queryTF.setColumns(20);
+		queryCB = new JComboBox<String>();
+	    queryCB.setPrototypeDisplayValue("XXXXXXXXXXXXXXXXXXXXXXXXX"); 
+		
+		//queryCB.setMinimumSize(new Dimension(100, queryCB.getPreferredSize().height));
+		//queryCB.setSize(200, queryCB.getPreferredSize().height);
+		//queryCB.setPreferredSize(new Dimension(100, queryTF.getSize().height));
 		parseBT = new JButton("Parse");
-		Component horizontalStrut = Box.createHorizontalStrut(120);		
+		Component horizontalStrut = Box.createHorizontalStrut(200);		
 		controllPanel1.add(queryTF);
+		controllPanel1.add(queryCB);
 		controllPanel1.add(horizontalStrut);
 		controllPanel1.add(parseBT);
 
@@ -76,18 +113,28 @@ public class Window extends JFrame {
 
 		// central
 		textArea = new JTextArea();
-		centralPanel.add(textArea);	
-
-		// bottom 
-		table = new JTable();
-		bottomPanel.add(table);
+		JScrollPane textScroll = new JScrollPane();
+		textScroll.setMinimumSize(new Dimension(800, 100));
+		textScroll.setViewportView(textArea);
+		centralPanel.add(textScroll, BorderLayout.CENTER);	
 
 		contentPane.add(topPanel, BorderLayout.NORTH);
 		contentPane.add(centralPanel, BorderLayout.CENTER);
 		contentPane.add(bottomPanel, BorderLayout.SOUTH);
+		bottomPanel.setLayout(new BorderLayout(0, 0));
+
+		// bottom 
+		table = new JTable();
+		//JScrollPane tableScroll = new JScrollPane();
+		//tableScroll.setMinimumSize(new Dimension(100, 100));
+		//tableScroll.setViewportView(table);
+		
+		//bottomPanel.add(tableScroll);
+		//bottomPanel.add(tableScroll, BorderLayout.CENTER);
+		bottomPanel.add(table, BorderLayout.CENTER);
 	}
 	// GETTER    SETTERS
-	
+
 	public JTextField getQueryTF() {
 		return queryTF;
 	}
@@ -151,9 +198,16 @@ public class Window extends JFrame {
 	public void setTable(JTable table) {
 		this.table = table;
 	}
-	
-	
-	
-	
+
+	public JComboBox<String> getQueryCB() {
+		return queryCB;
+	}
+	public void setQueryCB(JComboBox<String> queryCB) {
+		this.queryCB = queryCB;
+	}
+
+
+
+
 
 }

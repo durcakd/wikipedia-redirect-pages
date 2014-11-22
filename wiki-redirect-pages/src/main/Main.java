@@ -19,6 +19,7 @@ public class Main {
 				try {
 					// create windows
 					Window theView = new Window();
+					
 
 
 					// controller
