@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -13,8 +14,16 @@ import java.util.Scanner;
 import mapReduce.parse.WikiRedirectParser;
 
 import org.apache.log4j.Logger;
+import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.TokenStream;
+import org.apache.lucene.analysis.Tokenizer;
+import org.apache.lucene.analysis.core.LowerCaseFilter;
+import org.apache.lucene.analysis.core.StopFilter;
+import org.apache.lucene.analysis.miscellaneous.ASCIIFoldingFilter;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
-import org.apache.lucene.analysis.util.CharArraySet;
+import org.apache.lucene.analysis.standard.StandardFilter;
+import org.apache.lucene.analysis.standard.StandardTokenizer;
+import org.apache.lucene.analysis.util.StopwordAnalyzerBase;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.TextField;
@@ -36,7 +45,7 @@ public class WikiIndex {
 	IndexWriter indexWriter;
 	Directory index;
 	IndexWriterConfig writerConfig;
-	StandardAnalyzer analyzer;
+	Analyzer analyzer;
 
 	public static Logger log = Logger.getLogger(WikiIndex.class);
 	public static int MAX_HINTS = 10;
@@ -49,9 +58,35 @@ public class WikiIndex {
 		indexWriter = null;
 		index = null;
 		writerConfig = null;
-		analyzer = new StandardAnalyzer(Version.LUCENE_CURRENT,new CharArraySet(Version.LUCENE_45, createStopWord(), true));
+		//analyzer = new StandardAnalyzer(Version.LUCENE_CURRENT,new CharArraySet(Version.LUCENE_45, createStopWord(), true));
 		//analyzer = new StandardAnalyzer(Version.LUCENE_CURRENT);
+		//analyzer = new PolishAnalyzer(Version.LUCENE_CURRENT); - not work
+
+		analyzer = new CustomAnalyzer(Version.LUCENE_CURRENT);
+
 	}
+
+	class CustomAnalyzer extends StopwordAnalyzerBase {
+		private Version ver;
+		
+		 public CustomAnalyzer(Version matchVersion){
+		        super(matchVersion, StandardAnalyzer.STOP_WORDS_SET);
+		        ver = matchVersion;
+		    }
+
+		@Override
+		protected TokenStreamComponents createComponents(String arg0, Reader reader) {
+			final Tokenizer source = new StandardTokenizer(ver, reader);
+
+	        TokenStream tokenStream = source;
+	        tokenStream = new StandardFilter(ver, tokenStream);
+	        tokenStream = new LowerCaseFilter(ver, tokenStream);
+	        tokenStream = new StopFilter(ver, tokenStream, getStopwordSet());
+	        tokenStream = new ASCIIFoldingFilter(tokenStream);
+	        return new TokenStreamComponents(source, tokenStream);
+		}
+	}
+
 
 	public void indexFile( String filePath, String indexDir) {
 		//analyzer = new StandardAnalyzer(Version.LUCENE_CURRENT);
@@ -77,7 +112,7 @@ public class WikiIndex {
 				String line = sc.nextLine();
 				line = line.trim();
 				if (line.endsWith(WikiRedirectParser.DOCDEL)) {
-					log.info("page  " + ++pcounter);
+					//log.info("page  " + ++pcounter);
 
 					sb.append(line.replaceFirst(WikiRedirectParser.DOCDEL, ""));
 					String page = sb.toString();
@@ -117,7 +152,7 @@ public class WikiIndex {
 		try{
 			mainSplit = value.toString().split(WikiRedirectParser.DEL);
 			if (mainSplit.length == 3){
-				String title = mainSplit[0].trim();
+				String title = mainSplit[0].split(WikiRedirectParser.SUBDEL)[0].trim();
 				String text = mainSplit[2].trim();
 				//log.info( "TITLE:  " + title + "   TEXT:" + text.subSequence(0, 10));
 				if ( null != indexWriter){
@@ -137,7 +172,7 @@ public class WikiIndex {
 		Document doc = new Document();
 		doc.add(new TextField(FIELD_TITLE, title, Field.Store.YES));
 		doc.add(new TextField(FIELD_TEXT, text, Field.Store.YES));
-		log.info( "TITLE:  " + title + "   TEXT:" + text.subSequence(0, 5));
+		//log.info( "TITLE:  " + title + "   TEXT:" + text.subSequence(0, 5));
 		try {
 			w.addDocument(doc);
 		} catch (IOException e) {
