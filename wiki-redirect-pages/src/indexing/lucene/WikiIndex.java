@@ -203,8 +203,7 @@ public class WikiIndex {
 				doc.add( new TextField(FIELD_SCORE, String.valueOf(hits[i].score), Field.Store.NO));
 				
 				resDocs.add(doc);
-				//log.info(str +  " >>>> TITLE: " + doc.get("title") + " TEXT:" + doc.get("text"));
-				log.info(str +  " >>>> TITLE: " + doc.get("title"));
+				//log.info(str +  " >>>> TITLE: " + doc.get(FIELD_TITLE));
 			}		
 			reader.close();
 

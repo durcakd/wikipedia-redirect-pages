@@ -9,7 +9,9 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -18,7 +20,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.JComboBox;
 
 public class Window extends JFrame {
 
@@ -31,6 +32,7 @@ public class Window extends JFrame {
 	private JButton indexBT;
 	private JTextArea textArea;
 	private JTable table;
+	private JLabel stateLabel;
 
 	public void addSearchBTListener(ActionListener searchBTListener) {
 		searchBT.addActionListener(searchBTListener);
@@ -101,13 +103,19 @@ public class Window extends JFrame {
 		ButtonGroup bg = new ButtonGroup( );
 		titleRB = new JRadioButton("Title", true);
 		textRB = new JRadioButton("Text");
+		stateLabel = new JLabel("                            ");
+	//	stateLabel.setMinimumSize( new Dimension(100, stateLabel.getPreferredSize().height));
+		//stateLabel.setPreferredSize( new Dimension(100, stateLabel.getPreferredSize().height));
+		//stateLabel.setSize(100, stateLabel.getPreferredSize().height);
+		
 		indexBT = new JButton("Index");
 		bg.add(titleRB);
 		bg.add(textRB);
-		Component horizontalStrut_1 = Box.createHorizontalStrut(530);
+		Component horizontalStrut_1 = Box.createHorizontalStrut(400);
 		controllPanel2.add(searchBT);
 		controllPanel2.add(titleRB);
 		controllPanel2.add(textRB);
+		controllPanel2.add(stateLabel);
 		controllPanel2.add(horizontalStrut_1);
 		controllPanel2.add(indexBT);
 
@@ -205,8 +213,10 @@ public class Window extends JFrame {
 	public void setQueryCB(JComboBox<String> queryCB) {
 		this.queryCB = queryCB;
 	}
-
-
+	
+	public void setPromtMsg(String msg) {
+		this.stateLabel.setText(msg);;
+	}
 
 
 

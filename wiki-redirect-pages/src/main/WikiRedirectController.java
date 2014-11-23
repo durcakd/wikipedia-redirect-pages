@@ -22,6 +22,7 @@ import javax.swing.event.ListSelectionListener;
 
 import mapReduce.hadoop.WikiRedirectDriver;
 
+import org.apache.hadoop.yarn.util.SystemClock;
 import org.apache.log4j.Logger;
 import org.apache.lucene.document.Document;
 
@@ -54,9 +55,6 @@ public class WikiRedirectController {
 
 	public static String DEFAULT_PARSE_FILE = "skwiki-latest-pages-articles.xml";
 	public static String DEFAULT_INDEX_FILE = DEFAULT_HADOOP_DIR + "//part-r-00000";
-
-
-
 
 
 	public static String ACTUAL_FIELD = WikiIndex.FIELD_TITLE;
@@ -106,20 +104,36 @@ public class WikiRedirectController {
 			SwingUtilities.invokeLater(new Runnable() {
 				public void run() {
 					String query = view.getQueryTF().getText();
-					docs =  wikiIndex.search( ACTUAL_FIELD, query, DEFAULT_INDEX_DIR);
-					String[] columnNames = { WikiIndex.FIELD_SCORE, WikiIndex.FIELD_TITLE, WikiIndex.FIELD_TEXT};
-					Object[][] data = new Object[docs.size()][];
+					String msg;
+					if ( null==query || query.isEmpty())
+						view.setPromtMsg(" Cannot search empty string!");	
 
-					// data from docs to dataset
-					for (int row = 0; row < docs.size(); row++) {
-						data[row] = new Object[columnNames.length];
+					else {
+						long tStart = System.nanoTime();
 
-						for(int c=0; c < columnNames.length; c++) {
-							data[row][c] = docs.get(row).get( columnNames[c]);
-						}
+						docs =  wikiIndex.search( ACTUAL_FIELD, query, DEFAULT_INDEX_DIR);
 
-					}			
-					tableModel.updateTableModel(columnNames, data);	
+						long tRes = (System.nanoTime()- tStart)/1000000; // time in miliseconds
+						msg = "  Time[ms]: " + String.valueOf(tRes);
+						msg = msg + "                            ".substring(msg.length());	
+						view.setPromtMsg(msg);	
+						log.info("SEARCH TIME:" + tRes);
+
+
+						String[] columnNames = { WikiIndex.FIELD_SCORE, WikiIndex.FIELD_TITLE, WikiIndex.FIELD_TEXT};
+						Object[][] data = new Object[docs.size()][];
+
+						// data from docs to dataset
+						for (int row = 0; row < docs.size(); row++) {
+							data[row] = new Object[columnNames.length];
+
+							for(int c=0; c < columnNames.length; c++) {
+								data[row][c] = docs.get(row).get( columnNames[c]);
+							}
+
+						}			
+						tableModel.updateTableModel(columnNames, data);	
+					}
 				}
 			});
 		}
