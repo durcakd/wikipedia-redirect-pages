@@ -88,7 +88,7 @@ public class WikiRedirectParser {
 
 				// REDIRECT
 
-				if (text.toLowerCase().startsWith ("#redirect")  ) {
+				if (text.toLowerCase().startsWith("#redirect") || text.toLowerCase().startsWith("#presmeruj")) {
 					Matcher redirectMatcher = linkPattern.matcher(text);
 					if(redirectMatcher.find()) {
 						String[] redirects = redirectMatcher.group().replaceAll("[\\[\\]]","").trim().split("#");
