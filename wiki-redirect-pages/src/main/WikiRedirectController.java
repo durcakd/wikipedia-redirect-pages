@@ -12,6 +12,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
@@ -93,7 +94,7 @@ public class WikiRedirectController {
 
 		view.getQueryTF().getDocument().addDocumentListener( searchTextChangeListener);
 		view.getQueryCB().addActionListener(spellCheckItemListener );
-		
+
 	}
 
 	/**
@@ -112,11 +113,11 @@ public class WikiRedirectController {
 					// data from docs to dataset
 					for (int row = 0; row < docs.size(); row++) {
 						data[row] = new Object[columnNames.length];
-						
+
 						for(int c=0; c < columnNames.length; c++) {
 							data[row][c] = docs.get(row).get( columnNames[c]);
 						}
-						
+
 					}			
 					tableModel.updateTableModel(columnNames, data);	
 				}
@@ -138,10 +139,13 @@ public class WikiRedirectController {
 
 					// if is something selected
 					if (row >= 0 && column >= 0 && docs.size() > row) {
-						view.getTextArea().setText("");
-						view.getTextArea().append(docs.get(row).get(WikiIndex.FIELD_TITLE));
-						view.getTextArea().append("\n \n");
-						view.getTextArea().append(docs.get(row).get(WikiIndex.FIELD_TEXT));
+						JTextArea area = view.getTextArea();
+						area.setText("");
+						area.append(docs.get(row).get(WikiIndex.FIELD_TITLE));
+						area.append("\n \n");
+						area.append(docs.get(row).get(WikiIndex.FIELD_TEXT));
+						area.setCaretPosition( 0 );
+
 						log.info("selected row " + row + " from table");
 					} 		
 				}
@@ -219,17 +223,17 @@ public class WikiRedirectController {
 			});
 		}
 	}
-	
+
 	/**
 	 * Listener for updating spell check combo box with suggestions
 	 */
 	class SearchTextChangeListener implements DocumentListener {
 		SpellCheckItemListener spellCheckItemListener;
-		
+
 		public SearchTextChangeListener(SpellCheckItemListener listener) {
 			spellCheckItemListener = listener;
 		}
-		
+
 		@Override
 		public void changedUpdate(DocumentEvent arg0) {
 			change();
@@ -274,11 +278,11 @@ public class WikiRedirectController {
 		public SpellCheckItemListener(JTextField queryTF) {
 			this.queryTF = queryTF;
 		}
-				
+
 		public void enableAction(boolean enable) {
 			isActionEnabled = enable;
 		}
-		
+
 		@Override
 		public void actionPerformed(ActionEvent e) {
 
