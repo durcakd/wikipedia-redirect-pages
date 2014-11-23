@@ -11,6 +11,7 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
@@ -41,12 +42,14 @@ public class WikiRedirectController {
 	public static String DICTIONARY_1 = "sk.txt";
 	public static String DICTIONARY_2 = "slovak.txt";
 
-	public static String DEFAULT_HADOOP_DIR = "fonalout";
-	public static String DEFAULT_INDEX_DIR = "~//testIndexDirFinal1";
+	public static String DEFAULT_HADOOP_DIR = "defaultHadoop";
+	public static String DEFAULT_INDEX_DIR = "defaultIndex";
 
-	public static String TEST_HADOOP_DIR = "testHadoop";
-	public static String TEST_INDEX_DIR = "testIndex";
+	//public static String TEST_HADOOP_DIR = "testHadoop";
+	//public static String TEST_INDEX_DIR = "testIndex";
 
+	public static String TEST_HADOOP_DIR = "defaultHadoop";
+	public static String TEST_INDEX_DIR = "defaultIndex";
 
 	public static String DEFAULT_PARSE_FILE = "skwiki-latest-pages-articles.xml";
 	public static String DEFAULT_INDEX_FILE = DEFAULT_HADOOP_DIR + "//part-r-00000";
@@ -72,6 +75,8 @@ public class WikiRedirectController {
 		tableModel = new SearchResultTableModel();
 
 		view.getTable().setModel(tableModel);
+		view.getTable().getColumnModel().getColumn(0).setMaxWidth(80);
+		view.getTable().setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
 
 		// adding listeners
 		view.addSearchBTListener( new SearchListener());
@@ -89,11 +94,6 @@ public class WikiRedirectController {
 		view.getQueryTF().getDocument().addDocumentListener( searchTextChangeListener);
 		view.getQueryCB().addActionListener(spellCheckItemListener );
 		
-		//view.getQueryCB().addItemListener(new SpellCheckItemChangeListener());
-
-		
-		
-		
 	}
 
 	/**
@@ -106,17 +106,19 @@ public class WikiRedirectController {
 				public void run() {
 					String query = view.getQueryTF().getText();
 					docs =  wikiIndex.search( ACTUAL_FIELD, query, DEFAULT_INDEX_DIR);
-					String[] columnNames = {"Title","Text"};
+					String[] columnNames = { WikiIndex.FIELD_SCORE, WikiIndex.FIELD_TITLE, WikiIndex.FIELD_TEXT};
 					Object[][] data = new Object[docs.size()][];
 
 					// data from docs to dataset
 					for (int row = 0; row < docs.size(); row++) {
 						data[row] = new Object[columnNames.length];
-						data[row][0] = docs.get(row).get(WikiIndex.FIELD_TITLE);
-						data[row][1] = docs.get(row).get(WikiIndex.FIELD_TEXT);
-					}
-					tableModel.updateTableModel(columnNames, data);
-
+						
+						for(int c=0; c < columnNames.length; c++) {
+							data[row][c] = docs.get(row).get( columnNames[c]);
+						}
+						
+					}			
+					tableModel.updateTableModel(columnNames, data);	
 				}
 			});
 		}

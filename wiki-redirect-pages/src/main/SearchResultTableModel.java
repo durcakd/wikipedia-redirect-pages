@@ -6,8 +6,8 @@ import javax.swing.table.AbstractTableModel;
 
 public class SearchResultTableModel extends AbstractTableModel {
 
-		private String[] columnNames = { "" }; // columns names
-		private Object[][] data = { { "" } }; // table data
+		private String[] columnNames = { "", "", "" }; // columns names
+		private Object[][] data = {  }; // table data
 
 		int rows = 0;
 		int allRows = WikiIndex.MAX_HINTS; // max rows
@@ -79,7 +79,8 @@ public class SearchResultTableModel extends AbstractTableModel {
 			}
 
 			// fire change in table model
-			super.fireTableStructureChanged();
+			super.fireTableDataChanged();//  StructureChanged();
+			
 
 		}
 

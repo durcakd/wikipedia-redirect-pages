@@ -49,8 +49,9 @@ public class WikiIndex {
 
 	public static Logger log = Logger.getLogger(WikiIndex.class);
 	public static int MAX_HINTS = 10;
-	public static final String FIELD_TITLE = "title";
-	public static final String FIELD_TEXT = "text";
+	public static final String FIELD_TITLE = "Title";
+	public static final String FIELD_TEXT = "Text";
+	public static final String FIELD_SCORE = "Score";
 	public static final String STOP_WORDS_FILE = "stop-words-slovak.txt";
 
 	public WikiIndex () {
@@ -159,7 +160,7 @@ public class WikiIndex {
 					addDoc( indexWriter, title, text);
 				}
 			} else {
-				log.info("VALUE\n" + value);
+				log.info("NOT EXACTLY 3 FIELDS IN RESULT\n" + value);
 			}
 
 		}catch (Exception e ) {
@@ -199,6 +200,8 @@ public class WikiIndex {
 			for(int i=0;i<hits.length;++i) {
 				int docId = hits[i].doc;
 				Document doc = searcher.doc(docId);
+				doc.add( new TextField(FIELD_SCORE, String.valueOf(hits[i].score), Field.Store.NO));
+				
 				resDocs.add(doc);
 				//log.info(str +  " >>>> TITLE: " + doc.get("title") + " TEXT:" + doc.get("text"));
 				log.info(str +  " >>>> TITLE: " + doc.get("title"));
