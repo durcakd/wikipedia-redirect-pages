@@ -1,0 +1,422 @@
+Bistabilný klopný obvod	 YXXXXXXY YXXXXXXY== Bistabilný preklápací obvod ==
+Tranzistorový BKO typu RS
+Bistabilný preklápací obvod (skr. BKO) sa môže nachádzať v jednom z dvoch stabilných stavov. Vstupmi obvodu je možné ho medzi týmito stavmi ľubovoľne preklápať.
+Tento typ preklápacieho obvodu slúži ako základ registrov, statických pamätí, čítačov a deličiek kmitočtu.
+ clear 
+
+=== Preklápací obvod RS ===
+Schematická značka hradla RS
+Schéma obvodu RS, zloženého z hradiel NOR. Vstupy R a S sú v tomto prípade negované - aktívne v log.0. 
+Preklápací obvod RS (angl. SR latch) je najjednoduchší asynchrónny bistabilný preklápací obvod. Má dva vstupy: R (z angl. Reset - nulovanie) a S (z angl. Set - nastavenie). Uložená hodnota je k dispozícii na výstupe Q. Obvykle je k dispozícii tiež negovaný výstup Q. 
+Základný stav oboch vstupov je log.0. V tomto režime si obvod pamätá naposledy nastavenú hodnotu. Privedením log.1 na vstup S sa obvod nastaví (Q  =  log.1) a vďaka vnútornej spätnej väzbe zostane nastavený aj po návrate vstupu S na log.0. Privedením log.1 na vstup R sa vynuluje (Q  =  log.0) a rovnako zostane vynulovaný aj po návrate R na log.0. Kombinácia R = S = log.1 sa nazýva zakázaný (alebo tiež nestabilný, hazardný) stav, pretože pri ňom nie je definované v akom stave zostane obvod po návrate R a S na log.0.
+class="wikitable" style="text-align:center"
+Pravdivostná tabuľka obvodu RS
+S     R     Qn+1     pozn.
+0     0     Qn     zachovanie stavu
+0     1     0     vynulovanie
+1     0     1     nastavenie
+1     1     ?     zakázaný stav
+ clear 
+
+=== Preklápací obvod RST ===
+Schematická značka hradla RST (synchronizovaného úrovňou)
+Schéma obvodu RST, zloženého z hradiel NOR a AND. Ak je na hodinovom vstupe C log.0, hradlá AND blokujú vstupy R a S.
+Časové priebehy signálov na obvode RST. Červený priebeh: výstup hranou synchronizovaného variantu obvodu
+Preklápací obvod RST  (angl. Gated SR latch) je synchrónny variant obvodu RS. Princíp zostáva zachovaný, ale k preklopeniu obvodu dochádza len v konkrétnych prípadoch, v závislosti od hodnoty signálu na hodinovom vstupe T (alebo častejšie C z angl. Clock - hodiny). Obvod RST je synchronizovaný úrovňou (hladinová synchronizácia) hodinového signálu - stav je možné meniť po celú dobu trvania hodinového impulzu.
+class="wikitable" style="text-align:center"
+Pravdivostná tabuľka obvodu RST
+S     R     C     Qn+1     pozn.
+X     X     0     Qn     zachovanie stavu
+0     0     1     Qn     zachovanie stavu
+0     1     1     0     vynulovanie
+1     0     1     1     nastavenie
+1     1     1     ?     zakázaný stav
+ clear 
+
+=== Preklápací obvod D ===
+Schematická značka hradla D (hranou synchronizovaného)
+Schéma obvodu D, zloženého z hradla RST a invertoru (v tomto prípade je synchronizovaný úrovňou) 
+ Schematická značka hradla D so synchronizáciou nábežnou hranou a vyvedenými vstupmi R a S
+Preklápací obvod D (z angl. Delay - zdržanie) je synchrónny bistabilný preklápací obvod so vstupom D (Data) a hodinovým vstupom C (Clock). Obvod realizuje 1-bitovú pamäť. Pri nábežnej hrane hodinového signálu sa momentálna hodnota vstupu D skopíruje do vnútorného stavu a na výstup, kde zostane zachovaná až do nasledovnej nábežnej hrany hodinového signálu.
+Jednoduchý preklápací obvod D je možné zostaviť z obvodu RST tak, že na vstup S privedieme priamo hodnotu vstupu D a na vstup R jeho negovanú hodnotu (pozri obr.). Obvod sa potom pri log.1 na vstupe D nastaví a naopak pri log.0 vynuluje.
+Preklápacie obvody D sa v praxi väčšinou vyrábajú so synchronizáciou nábežnou hranou hodinového signálu. Mávajú tiež často okrem vstupu D vyvedené aj vstupy R a S, umožňujúce nastavenie a nulovanie obvodu (synchrónne alebo asynchrónne).
+Preklápacie obvody D tvoria základ posuvných registrov.
+class="wikitable" style="text-align:center"
+Pravdivostná tabuľka obvodu D
+D     C     Qn+1     pozn.
+X     0     Qn     zachovanie stavu
+0     1/↑     0     nastavenie log.0
+1     1/↑     1     nastavenie log.1
+ clear 
+
+=== Preklápací obvod JK ===
+Schematická značka hradla JK
+Schéma obvodu JK, zloženého z (hranou synchronizovaného) hradla RST a hradla AND 
+Časové priebehy signálov na obvode JK. T vyznačuje body, v ktorých došlo k negácii uloženej hodnoty (J = K = 1)
+Preklápací obvod JK je synchrónny bistabilný preklápací obvod. Je rozšírením obvodu RST. Vstup J (= S) nastavuje log.1, K (= R) nastavuje log.0. Rozšírením je interpretácia vstupnej kombinácie R = S = 1, ktorá je pri obvode RS(T) zakázaná. Obvod JK pri tejto kombinácii vstupov zneguje (preklopí, invertuje) uloženú hodnotu.
+Názov obvodu je odvodený od mena Jacka Kilbyho - elektroinžiniera, neskôr oceneného Nobelovou cenou za fyziku, ktorý v roku 1958, počas práce pre spoločnosť Texas Instruments vynašiel integrovaný obvod.
+Preklápacie obvody JK sa v praxi väčšinou vyrábajú ako synchronizované nábežnou hranou. JK sú univerzálne preklápacie obvody, ktorými je možné v prípade potreby jednoducho nahradiť preklápacie obvody typov RST, D a T.
+class="wikitable" style="text-align:center"
+Pravdivostná tabuľka obvodu JK
+J     K     C     Qn+1     pozn.
+X     X     0     Qn     zachovanie stavu (C = 0)
+0     0     1/↑     Qn     zachovanie stavu (J = K = 0)
+0     1     1/↑     0     vynulovanie (J = 0, K = 1)
+1     0     1/↑     1     nastavenie (J = 1, K = 0)
+1     1     1/↑     Qn     znegovanie stavu (J = K = 1)
+ clear 
+
+=== Preklápací obvod T ===
+Schematická značka asynchrónneho hradla T
+Schéma asynchrónneho obvodu T, zloženého z (hranou synchronizovaného) hradla RST a invertoru 
+Preklápací obvod T (z angl. Toggle - preklopiť) je bistabilný preklápací obvod s jediným vstupom T (synchrónny variant má navyše hodinový vstup). Ak je na vstupe T log.0, obvod zachováva predošlý stav. Po privedení log.1 na vstup T sa predošlý stav zneguje.
+Synchrónny obvod T je možné vytvoriť z obvodu JK prostým prepojením jeho vstupov do jediného (J = K = T). Asynchrónny obvod T je možné vytvoriť zo synchrónneho prepojením hodinového signálu so vstupom T (C = T).
+Obvod T tvorí základ čítačov a deličiek kmitočtu. Po privedení pravouhlého signálu s frekvenciou f na vstup T asynchrónneho obvodu T (prípadne na vstup C synchrónneho obvodu pri súčasnom nastavení vstupu T na log.1), dostaneme na jeho výstupe signál s frekvenciou f/2.
+class="wikitable" style="text-align:center"
+Pravdivostná tabuľka obvodu T
+T     Qn     Qn+1     pozn.
+0     0     0     zachovanie stavu
+0     1     1     zachovanie stavu
+1     0     1     znegovanie stavu
+1     1     0     znegovanie stavu
+ clear 
+
+>>>>>>>>>>>>>>>>>>>>>>>
+Bistabilný preklápací obvod	 YXXXXXXY YXXXXXXY== Bistabilný preklápací obvod ==
+Tranzistorový BKO typu RS
+Bistabilný preklápací obvod (skr. BKO) sa môže nachádzať v jednom z dvoch stabilných stavov. Vstupmi obvodu je možné ho medzi týmito stavmi ľubovoľne preklápať.
+Tento typ preklápacieho obvodu slúži ako základ registrov, statických pamätí, čítačov a deličiek kmitočtu.
+ clear 
+
+=== Preklápací obvod RS ===
+Schematická značka hradla RS
+Schéma obvodu RS, zloženého z hradiel NOR. Vstupy R a S sú v tomto prípade negované - aktívne v log.0. 
+Preklápací obvod RS (angl. SR latch) je najjednoduchší asynchrónny bistabilný preklápací obvod. Má dva vstupy: R (z angl. Reset - nulovanie) a S (z angl. Set - nastavenie). Uložená hodnota je k dispozícii na výstupe Q. Obvykle je k dispozícii tiež negovaný výstup Q. 
+Základný stav oboch vstupov je log.0. V tomto režime si obvod pamätá naposledy nastavenú hodnotu. Privedením log.1 na vstup S sa obvod nastaví (Q  =  log.1) a vďaka vnútornej spätnej väzbe zostane nastavený aj po návrate vstupu S na log.0. Privedením log.1 na vstup R sa vynuluje (Q  =  log.0) a rovnako zostane vynulovaný aj po návrate R na log.0. Kombinácia R = S = log.1 sa nazýva zakázaný (alebo tiež nestabilný, hazardný) stav, pretože pri ňom nie je definované v akom stave zostane obvod po návrate R a S na log.0.
+class="wikitable" style="text-align:center"
+Pravdivostná tabuľka obvodu RS
+S     R     Qn+1     pozn.
+0     0     Qn     zachovanie stavu
+0     1     0     vynulovanie
+1     0     1     nastavenie
+1     1     ?     zakázaný stav
+ clear 
+
+=== Preklápací obvod RST ===
+Schematická značka hradla RST (synchronizovaného úrovňou)
+Schéma obvodu RST, zloženého z hradiel NOR a AND. Ak je na hodinovom vstupe C log.0, hradlá AND blokujú vstupy R a S.
+Časové priebehy signálov na obvode RST. Červený priebeh: výstup hranou synchronizovaného variantu obvodu
+Preklápací obvod RST  (angl. Gated SR latch) je synchrónny variant obvodu RS. Princíp zostáva zachovaný, ale k preklopeniu obvodu dochádza len v konkrétnych prípadoch, v závislosti od hodnoty signálu na hodinovom vstupe T (alebo častejšie C z angl. Clock - hodiny). Obvod RST je synchronizovaný úrovňou (hladinová synchronizácia) hodinového signálu - stav je možné meniť po celú dobu trvania hodinového impulzu.
+class="wikitable" style="text-align:center"
+Pravdivostná tabuľka obvodu RST
+S     R     C     Qn+1     pozn.
+X     X     0     Qn     zachovanie stavu
+0     0     1     Qn     zachovanie stavu
+0     1     1     0     vynulovanie
+1     0     1     1     nastavenie
+1     1     1     ?     zakázaný stav
+ clear 
+
+=== Preklápací obvod D ===
+Schematická značka hradla D (hranou synchronizovaného)
+Schéma obvodu D, zloženého z hradla RST a invertoru (v tomto prípade je synchronizovaný úrovňou) 
+ Schematická značka hradla D so synchronizáciou nábežnou hranou a vyvedenými vstupmi R a S
+Preklápací obvod D (z angl. Delay - zdržanie) je synchrónny bistabilný preklápací obvod so vstupom D (Data) a hodinovým vstupom C (Clock). Obvod realizuje 1-bitovú pamäť. Pri nábežnej hrane hodinového signálu sa momentálna hodnota vstupu D skopíruje do vnútorného stavu a na výstup, kde zostane zachovaná až do nasledovnej nábežnej hrany hodinového signálu.
+Jednoduchý preklápací obvod D je možné zostaviť z obvodu RST tak, že na vstup S privedieme priamo hodnotu vstupu D a na vstup R jeho negovanú hodnotu (pozri obr.). Obvod sa potom pri log.1 na vstupe D nastaví a naopak pri log.0 vynuluje.
+Preklápacie obvody D sa v praxi väčšinou vyrábajú so synchronizáciou nábežnou hranou hodinového signálu. Mávajú tiež často okrem vstupu D vyvedené aj vstupy R a S, umožňujúce nastavenie a nulovanie obvodu (synchrónne alebo asynchrónne).
+Preklápacie obvody D tvoria základ posuvných registrov.
+class="wikitable" style="text-align:center"
+Pravdivostná tabuľka obvodu D
+D     C     Qn+1     pozn.
+X     0     Qn     zachovanie stavu
+0     1/↑     0     nastavenie log.0
+1     1/↑     1     nastavenie log.1
+ clear 
+
+=== Preklápací obvod JK ===
+Schematická značka hradla JK
+Schéma obvodu JK, zloženého z (hranou synchronizovaného) hradla RST a hradla AND 
+Časové priebehy signálov na obvode JK. T vyznačuje body, v ktorých došlo k negácii uloženej hodnoty (J = K = 1)
+Preklápací obvod JK je synchrónny bistabilný preklápací obvod. Je rozšírením obvodu RST. Vstup J (= S) nastavuje log.1, K (= R) nastavuje log.0. Rozšírením je interpretácia vstupnej kombinácie R = S = 1, ktorá je pri obvode RS(T) zakázaná. Obvod JK pri tejto kombinácii vstupov zneguje (preklopí, invertuje) uloženú hodnotu.
+Názov obvodu je odvodený od mena Jacka Kilbyho - elektroinžiniera, neskôr oceneného Nobelovou cenou za fyziku, ktorý v roku 1958, počas práce pre spoločnosť Texas Instruments vynašiel integrovaný obvod.
+Preklápacie obvody JK sa v praxi väčšinou vyrábajú ako synchronizované nábežnou hranou. JK sú univerzálne preklápacie obvody, ktorými je možné v prípade potreby jednoducho nahradiť preklápacie obvody typov RST, D a T.
+class="wikitable" style="text-align:center"
+Pravdivostná tabuľka obvodu JK
+J     K     C     Qn+1     pozn.
+X     X     0     Qn     zachovanie stavu (C = 0)
+0     0     1/↑     Qn     zachovanie stavu (J = K = 0)
+0     1     1/↑     0     vynulovanie (J = 0, K = 1)
+1     0     1/↑     1     nastavenie (J = 1, K = 0)
+1     1     1/↑     Qn     znegovanie stavu (J = K = 1)
+ clear 
+
+=== Preklápací obvod T ===
+Schematická značka asynchrónneho hradla T
+Schéma asynchrónneho obvodu T, zloženého z (hranou synchronizovaného) hradla RST a invertoru 
+Preklápací obvod T (z angl. Toggle - preklopiť) je bistabilný preklápací obvod s jediným vstupom T (synchrónny variant má navyše hodinový vstup). Ak je na vstupe T log.0, obvod zachováva predošlý stav. Po privedení log.1 na vstup T sa predošlý stav zneguje.
+Synchrónny obvod T je možné vytvoriť z obvodu JK prostým prepojením jeho vstupov do jediného (J = K = T). Asynchrónny obvod T je možné vytvoriť zo synchrónneho prepojením hodinového signálu so vstupom T (C = T).
+Obvod T tvorí základ čítačov a deličiek kmitočtu. Po privedení pravouhlého signálu s frekvenciou f na vstup T asynchrónneho obvodu T (prípadne na vstup C synchrónneho obvodu pri súčasnom nastavení vstupu T na log.1), dostaneme na jeho výstupe signál s frekvenciou f/2.
+class="wikitable" style="text-align:center"
+Pravdivostná tabuľka obvodu T
+T     Qn     Qn+1     pozn.
+0     0     0     zachovanie stavu
+0     1     1     zachovanie stavu
+1     0     1     znegovanie stavu
+1     1     0     znegovanie stavu
+ clear 
+
+>>>>>>>>>>>>>>>>>>>>>>>
+Monostabilný klopný obvod	 YXXXXXXY YXXXXXXY== Monostabilný preklápací obvod ==
+Tranzistorový MKO
+Monostabilný preklápací obvod (skr. MKO) má jeden stabilný stav, z ktorého je možné ho vstupom preklopiť do nestabilného stavu. Obvod sa sám po určitom čase preklopí naspäť do stabilného stavu. 
+Oneskorenie je zvyčajne definované časovou konštantou RC obvodu, zloženého z rezistoru a kondenzátora (na obr. vpravo je to R2-C1). Po preklopení obvodu do nestabilného stavu sa kondenzátor začne cez rezistor nabíjať a po dosiahnutí určitého prahového napätia sa obvod preklopí späť do stabilného stavu, kondenzátor sa vybije a celý proces sa môže zopakovať.
+Tento typ obvodu sa využíva napr. ako oneskorovací obvod (typický príklad: ošetrenie zákmitov pri stlačení mechanického spínača) alebo časovač.
+ clear 
+
+>>>>>>>>>>>>>>>>>>>>>>>
+Monostabilný preklápací obvod	 YXXXXXXY YXXXXXXY== Monostabilný preklápací obvod ==
+Tranzistorový MKO
+Monostabilný preklápací obvod (skr. MKO) má jeden stabilný stav, z ktorého je možné ho vstupom preklopiť do nestabilného stavu. Obvod sa sám po určitom čase preklopí naspäť do stabilného stavu. 
+Oneskorenie je zvyčajne definované časovou konštantou RC obvodu, zloženého z rezistoru a kondenzátora (na obr. vpravo je to R2-C1). Po preklopení obvodu do nestabilného stavu sa kondenzátor začne cez rezistor nabíjať a po dosiahnutí určitého prahového napätia sa obvod preklopí späť do stabilného stavu, kondenzátor sa vybije a celý proces sa môže zopakovať.
+Tento typ obvodu sa využíva napr. ako oneskorovací obvod (typický príklad: ošetrenie zákmitov pri stlačení mechanického spínača) alebo časovač.
+ clear 
+
+>>>>>>>>>>>>>>>>>>>>>>>
+Astabilný klopný obvod	 YXXXXXXY YXXXXXXY== Astabilný preklápací obvod ==
+Tranzistorový AKO - multivibrátor
+Astabilný preklápací obvod (skr. AKO) alebo multivibrátor nemá žiaden stabilný stav a neustále sa preklápa medzi dvoma nestabilnými stavmi. 
+Doby, po ktoré obvod zotrváva v jednotlivých stavoch (a tým aj frekvencia a strieda generovaného signálu) sú v najjednoduchšom prípade definované časovými konštantami RC obvodov, zložených z rezistoru a kondenzátora (na obr. vpravo sú to R2-C1, R3-C2). Preklápací obvod môže byť symetrický (rovnaké časové konštanty pre oba stavy, AKO generuje pravouhlé impulzy so striedou 1:1) alebo asymetrický (strieda iná než 1:1). V prípade vyšších nárokov na stabilitu frekvencie je možné v obvode spätnej väzby preklápacieho obvodu použiť kryštálový výbrus.
+Tento typ preklápacieho obvodu sa používa napr. ako generátor impulzov.
+ clear 
+
+>>>>>>>>>>>>>>>>>>>>>>>
+Astabilný preklápací obvod	 YXXXXXXY YXXXXXXY== Astabilný preklápací obvod ==
+Tranzistorový AKO - multivibrátor
+Astabilný preklápací obvod (skr. AKO) alebo multivibrátor nemá žiaden stabilný stav a neustále sa preklápa medzi dvoma nestabilnými stavmi. 
+Doby, po ktoré obvod zotrváva v jednotlivých stavoch (a tým aj frekvencia a strieda generovaného signálu) sú v najjednoduchšom prípade definované časovými konštantami RC obvodov, zložených z rezistoru a kondenzátora (na obr. vpravo sú to R2-C1, R3-C2). Preklápací obvod môže byť symetrický (rovnaké časové konštanty pre oba stavy, AKO generuje pravouhlé impulzy so striedou 1:1) alebo asymetrický (strieda iná než 1:1). V prípade vyšších nárokov na stabilitu frekvencie je možné v obvode spätnej väzby preklápacieho obvodu použiť kryštálový výbrus.
+Tento typ preklápacieho obvodu sa používa napr. ako generátor impulzov.
+ clear 
+
+>>>>>>>>>>>>>>>>>>>>>>>
+Preklápací obvod T	 YXXXXXXY YXXXXXXY=== Preklápací obvod T ===
+Schematická značka asynchrónneho hradla T
+Schéma asynchrónneho obvodu T, zloženého z (hranou synchronizovaného) hradla RST a invertoru 
+Preklápací obvod T (z angl. Toggle - preklopiť) je bistabilný preklápací obvod s jediným vstupom T (synchrónny variant má navyše hodinový vstup). Ak je na vstupe T log.0, obvod zachováva predošlý stav. Po privedení log.1 na vstup T sa predošlý stav zneguje.
+Synchrónny obvod T je možné vytvoriť z obvodu JK prostým prepojením jeho vstupov do jediného (J = K = T). Asynchrónny obvod T je možné vytvoriť zo synchrónneho prepojením hodinového signálu so vstupom T (C = T).
+Obvod T tvorí základ čítačov a deličiek kmitočtu. Po privedení pravouhlého signálu s frekvenciou f na vstup T asynchrónneho obvodu T (prípadne na vstup C synchrónneho obvodu pri súčasnom nastavení vstupu T na log.1), dostaneme na jeho výstupe signál s frekvenciou f/2.
+class="wikitable" style="text-align:center"
+Pravdivostná tabuľka obvodu T
+T     Qn     Qn+1     pozn.
+0     0     0     zachovanie stavu
+0     1     1     zachovanie stavu
+1     0     1     znegovanie stavu
+1     1     0     znegovanie stavu
+ clear 
+
+>>>>>>>>>>>>>>>>>>>>>>>
+Preklápací obvod JK	 YXXXXXXY YXXXXXXY=== Preklápací obvod JK ===
+Schematická značka hradla JK
+Schéma obvodu JK, zloženého z (hranou synchronizovaného) hradla RST a hradla AND 
+Časové priebehy signálov na obvode JK. T vyznačuje body, v ktorých došlo k negácii uloženej hodnoty (J = K = 1)
+Preklápací obvod JK je synchrónny bistabilný preklápací obvod. Je rozšírením obvodu RST. Vstup J (= S) nastavuje log.1, K (= R) nastavuje log.0. Rozšírením je interpretácia vstupnej kombinácie R = S = 1, ktorá je pri obvode RS(T) zakázaná. Obvod JK pri tejto kombinácii vstupov zneguje (preklopí, invertuje) uloženú hodnotu.
+Názov obvodu je odvodený od mena Jacka Kilbyho - elektroinžiniera, neskôr oceneného Nobelovou cenou za fyziku, ktorý v roku 1958, počas práce pre spoločnosť Texas Instruments vynašiel integrovaný obvod.
+Preklápacie obvody JK sa v praxi väčšinou vyrábajú ako synchronizované nábežnou hranou. JK sú univerzálne preklápacie obvody, ktorými je možné v prípade potreby jednoducho nahradiť preklápacie obvody typov RST, D a T.
+class="wikitable" style="text-align:center"
+Pravdivostná tabuľka obvodu JK
+J     K     C     Qn+1     pozn.
+X     X     0     Qn     zachovanie stavu (C = 0)
+0     0     1/↑     Qn     zachovanie stavu (J = K = 0)
+0     1     1/↑     0     vynulovanie (J = 0, K = 1)
+1     0     1/↑     1     nastavenie (J = 1, K = 0)
+1     1     1/↑     Qn     znegovanie stavu (J = K = 1)
+ clear 
+
+>>>>>>>>>>>>>>>>>>>>>>>
+Preklápací obvod D	 YXXXXXXY YXXXXXXY=== Preklápací obvod D ===
+Schematická značka hradla D (hranou synchronizovaného)
+Schéma obvodu D, zloženého z hradla RST a invertoru (v tomto prípade je synchronizovaný úrovňou) 
+ Schematická značka hradla D so synchronizáciou nábežnou hranou a vyvedenými vstupmi R a S
+Preklápací obvod D (z angl. Delay - zdržanie) je synchrónny bistabilný preklápací obvod so vstupom D (Data) a hodinovým vstupom C (Clock). Obvod realizuje 1-bitovú pamäť. Pri nábežnej hrane hodinového signálu sa momentálna hodnota vstupu D skopíruje do vnútorného stavu a na výstup, kde zostane zachovaná až do nasledovnej nábežnej hrany hodinového signálu.
+Jednoduchý preklápací obvod D je možné zostaviť z obvodu RST tak, že na vstup S privedieme priamo hodnotu vstupu D a na vstup R jeho negovanú hodnotu (pozri obr.). Obvod sa potom pri log.1 na vstupe D nastaví a naopak pri log.0 vynuluje.
+Preklápacie obvody D sa v praxi väčšinou vyrábajú so synchronizáciou nábežnou hranou hodinového signálu. Mávajú tiež často okrem vstupu D vyvedené aj vstupy R a S, umožňujúce nastavenie a nulovanie obvodu (synchrónne alebo asynchrónne).
+Preklápacie obvody D tvoria základ posuvných registrov.
+class="wikitable" style="text-align:center"
+Pravdivostná tabuľka obvodu D
+D     C     Qn+1     pozn.
+X     0     Qn     zachovanie stavu
+0     1/↑     0     nastavenie log.0
+1     1/↑     1     nastavenie log.1
+ clear 
+
+>>>>>>>>>>>>>>>>>>>>>>>
+Preklápací obvod RST	 YXXXXXXY YXXXXXXY=== Preklápací obvod RST ===
+Schematická značka hradla RST (synchronizovaného úrovňou)
+Schéma obvodu RST, zloženého z hradiel NOR a AND. Ak je na hodinovom vstupe C log.0, hradlá AND blokujú vstupy R a S.
+Časové priebehy signálov na obvode RST. Červený priebeh: výstup hranou synchronizovaného variantu obvodu
+Preklápací obvod RST  (angl. Gated SR latch) je synchrónny variant obvodu RS. Princíp zostáva zachovaný, ale k preklopeniu obvodu dochádza len v konkrétnych prípadoch, v závislosti od hodnoty signálu na hodinovom vstupe T (alebo častejšie C z angl. Clock - hodiny). Obvod RST je synchronizovaný úrovňou (hladinová synchronizácia) hodinového signálu - stav je možné meniť po celú dobu trvania hodinového impulzu.
+class="wikitable" style="text-align:center"
+Pravdivostná tabuľka obvodu RST
+S     R     C     Qn+1     pozn.
+X     X     0     Qn     zachovanie stavu
+0     0     1     Qn     zachovanie stavu
+0     1     1     0     vynulovanie
+1     0     1     1     nastavenie
+1     1     1     ?     zakázaný stav
+ clear 
+
+>>>>>>>>>>>>>>>>>>>>>>>
+Preklápací obvod RS	 YXXXXXXY YXXXXXXY=== Preklápací obvod RS ===
+Schematická značka hradla RS
+Schéma obvodu RS, zloženého z hradiel NOR. Vstupy R a S sú v tomto prípade negované - aktívne v log.0. 
+Preklápací obvod RS (angl. SR latch) je najjednoduchší asynchrónny bistabilný preklápací obvod. Má dva vstupy: R (z angl. Reset - nulovanie) a S (z angl. Set - nastavenie). Uložená hodnota je k dispozícii na výstupe Q. Obvykle je k dispozícii tiež negovaný výstup Q. 
+Základný stav oboch vstupov je log.0. V tomto režime si obvod pamätá naposledy nastavenú hodnotu. Privedením log.1 na vstup S sa obvod nastaví (Q  =  log.1) a vďaka vnútornej spätnej väzbe zostane nastavený aj po návrate vstupu S na log.0. Privedením log.1 na vstup R sa vynuluje (Q  =  log.0) a rovnako zostane vynulovaný aj po návrate R na log.0. Kombinácia R = S = log.1 sa nazýva zakázaný (alebo tiež nestabilný, hazardný) stav, pretože pri ňom nie je definované v akom stave zostane obvod po návrate R a S na log.0.
+class="wikitable" style="text-align:center"
+Pravdivostná tabuľka obvodu RS
+S     R     Qn+1     pozn.
+0     0     Qn     zachovanie stavu
+0     1     0     vynulovanie
+1     0     1     nastavenie
+1     1     ?     zakázaný stav
+ clear 
+
+>>>>>>>>>>>>>>>>>>>>>>>
+Preklápací obvod	BAAAABKlopný obvodYXXXXXXY YXXXXXXYPreklápací obvod (alebo bežnejšie, hoci nespisovne klopný obvod, skr. KO) je elektronický obvod s niekoľkými stabilnými alebo nestabilnými stavmi, medzi ktorými sa dokáže (na základe zmeny elektrickej veličiny na niektorom vstupe alebo vnútornej spätnej väzby) prepínať – preklápať. Skladá sa z niekoľkých tranzistorov, logických hradiel, alebo iných aktívnych súčiastok. 
+Preklápacie obvody majú v elektronike široké využitie ako generátory impulzov, oscilátory, statické pamäte, oneskorovače, časovače, čítače, deliče kmitočtu a pod. Na preklápacích obvodoch sú založené sekvenčné digitálne obvody, tvoriace základ digitálnych počítačov.
+
+== Delenie preklápacích obvodov ==
+Podľa stavov:
+* astabilné: dva nestabilné stavy, žiaden stabilný
+* monostabilné: jeden stabilný, jeden nestabilný stav
+* bistabilné: dva stabilné stavy, žiaden nestabilný
+Spôsoby značenia hodinového vstupu hradla s preklápacím obvodom podľa typu synchronizácie: 1. úrovňou, 2. nábežnou hranou, 3. úbežnou hranou
+Podľa existencie synchronizácie:
+* asynchrónne (alebo tiež transparentné): preklopia sa ihneď po zmene úrovne na niektorom riadiacom vstupe(angl. Latch alebo Transparent latch)
+* synchrónne: preklopia sa len v súčinnosti so synchronizačným (hodinovým, taktovacím) vstupom, ktorý (úrovňou alebo zmenou úrovne) povoľuje reakciu obvodu na riadiace vstupy(angl. Gated latch, Clocked latch, alebo Flip-flop podľa typu synchronizácie, pozri nižšie)
+Podľa typu synchronizácie (týka sa len synchrónnych preklápacích obvodov):
+* synchronizácia úrovňou hodinového signálu (úrovňová alebo hladinová synchronizácia) (angl. Gated latch alebo Clocked latch)
+* synchronizácia nábežnou hranou hodinového signálu (derivačná synchronizácia) (angl. Positive edge triggered flip-flop)
+* synchronizácia úbežnou hranou hodinového signálu (derivačná synchronizácia) (angl. Negative edge triggered flip-flop)
+Podľa funkcie (týka sa len bistabilných preklápacích obvodov):
+* RS, RST, D, JK, T, Schmittov preklápací obvod
+
+== Astabilný preklápací obvod ==
+Tranzistorový AKO – multivibrátor
+Astabilný preklápací obvod (skr. AKO) alebo multivibrátor nemá žiaden stabilný stav a neustále sa preklápa medzi dvoma nestabilnými stavmi. 
+Doby, po ktoré obvod zotrváva v jednotlivých stavoch (a tým aj frekvencia a strieda generovaného signálu) sú v najjednoduchšom prípade definované časovými konštantami RC obvodov, zložených z rezistoru a kondenzátora (na obr. vpravo sú to R2-C1, R3-C2). Preklápací obvod môže byť symetrický (rovnaké časové konštanty pre oba stavy, AKO generuje pravouhlé impulzy so striedou 1:1) alebo asymetrický (strieda iná než 1:1). V prípade vyšších nárokov na stabilitu frekvencie je možné v obvode spätnej väzby preklápacieho obvodu použiť kryštálový výbrus.
+Tento typ preklápacieho obvodu sa používa napr. ako generátor impulzov.
+ clear 
+
+== Monostabilný preklápací obvod ==
+Tranzistorový MKO
+Monostabilný preklápací obvod (skr. MKO) má jeden stabilný stav, z ktorého je možné ho vstupom preklopiť do nestabilného stavu. Obvod sa sám po určitom čase preklopí naspäť do stabilného stavu. 
+Oneskorenie je zvyčajne definované časovou konštantou RC obvodu, zloženého z rezistoru a kondenzátora (na obr. vpravo je to R2-C1). Po preklopení obvodu do nestabilného stavu sa kondenzátor začne cez rezistor nabíjať a po dosiahnutí určitého prahového napätia sa obvod preklopí späť do stabilného stavu, kondenzátor sa vybije a celý proces sa môže zopakovať.
+Tento typ obvodu sa využíva napr. ako oneskorovací obvod (typický príklad: ošetrenie zákmitov pri stlačení mechanického spínača) alebo časovač.
+ clear 
+
+== Bistabilný preklápací obvod ==
+Tranzistorový BKO typu RS
+Bistabilný preklápací obvod (skr. BKO) sa môže nachádzať v jednom z dvoch stabilných stavov. Vstupmi obvodu je možné ho medzi týmito stavmi ľubovoľne preklápať.
+Tento typ preklápacieho obvodu slúži ako základ registrov, statických pamätí, čítačov a deličiek kmitočtu.
+ clear 
+
+=== Preklápací obvod RS ===
+Schematická značka hradla RS
+Schéma obvodu RS, zloženého z hradiel NOR. Vstupy R a S sú v tomto prípade negované – aktívne v log.0. 
+Preklápací obvod RS (angl. SR latch) je najjednoduchší asynchrónny bistabilný preklápací obvod. Má dva vstupy: R (z angl. Reset – nulovanie) a S (z angl. Set – nastavenie). Uložená hodnota je k dispozícii na výstupe Q. Obvykle je k dispozícii tiež negovaný výstup Q. 
+Základný stav oboch vstupov je log.0. V tomto režime si obvod pamätá naposledy nastavenú hodnotu. Privedením log.1 na vstup S sa obvod nastaví (Q  =  log.1) a vďaka vnútornej spätnej väzbe zostane nastavený aj po návrate vstupu S na log.0. Privedením log.1 na vstup R sa vynuluje (Q  =  log.0) a rovnako zostane vynulovaný aj po návrate R na log.0. Kombinácia R = S = log.1 sa nazýva zakázaný (alebo tiež nestabilný, hazardný) stav, pretože pri ňom nie je definované v akom stave zostane obvod po návrate R a S na log.0.
+class="wikitable" style="text-align:center"
+Pravdivostná tabuľka obvodu RS
+S     R     Qn+1     pozn.
+0     0     Qn     zachovanie stavu
+0     1     0     vynulovanie
+1     0     1     nastavenie
+1     1     ?     zakázaný stav
+ clear 
+
+=== Preklápací obvod RST ===
+Schematická značka hradla RST (synchronizovaného úrovňou)
+Schéma obvodu RST, zloženého z hradiel NOR a AND. Ak je na hodinovom vstupe C log.0, hradlá AND blokujú vstupy R a S.
+Časové priebehy signálov na obvode RST. Červený priebeh: výstup hranou synchronizovaného variantu obvodu
+Preklápací obvod RST  (angl. Gated SR latch) je synchrónny variant obvodu RS. Princíp zostáva zachovaný, ale k preklopeniu obvodu dochádza len v konkrétnych prípadoch, v závislosti od hodnoty signálu na hodinovom vstupe T (alebo častejšie C z angl. Clock – hodiny). Obvod RST je synchronizovaný úrovňou (hladinová synchronizácia) hodinového signálu – stav je možné meniť po celú dobu trvania hodinového impulzu.
+class="wikitable" style="text-align:center"
+Pravdivostná tabuľka obvodu RST
+S     R     C     Qn+1     pozn.
+X     X     0     Qn     zachovanie stavu
+0     0     1     Qn     zachovanie stavu
+0     1     1     0     vynulovanie
+1     0     1     1     nastavenie
+1     1     1     ?     zakázaný stav
+ clear 
+
+=== Preklápací obvod D ===
+Schematická značka hradla D (hranou synchronizovaného)
+Schéma obvodu D, zloženého z hradla RST a invertoru (v tomto prípade je synchronizovaný úrovňou) 
+ Schematická značka hradla D so synchronizáciou nábežnou hranou a vyvedenými vstupmi R a S
+Preklápací obvod D (z angl. Delay – zdržanie) je synchrónny bistabilný preklápací obvod so vstupom D (Data) a hodinovým vstupom C (Clock). Obvod realizuje 1-bitovú pamäť. Pri nábežnej hrane hodinového signálu sa momentálna hodnota vstupu D skopíruje do vnútorného stavu a na výstup, kde zostane zachovaná až do nasledovnej nábežnej hrany hodinového signálu.
+Jednoduchý preklápací obvod D je možné zostaviť z obvodu RST tak, že na vstup S privedieme priamo hodnotu vstupu D a na vstup R jeho negovanú hodnotu (pozri obr.). Obvod sa potom pri log.1 na vstupe D nastaví a naopak pri log.0 vynuluje.
+Preklápacie obvody D sa v praxi väčšinou vyrábajú so synchronizáciou nábežnou hranou hodinového signálu. Mávajú tiež často okrem vstupu D vyvedené aj vstupy R a S, umožňujúce nastavenie a nulovanie obvodu (synchrónne alebo asynchrónne).
+Preklápacie obvody D tvoria základ posuvných registrov.
+class="wikitable" style="text-align:center"
+Pravdivostná tabuľka obvodu D
+D     C     Qn+1     pozn.
+X     0     Qn     zachovanie stavu
+0     1/↑     0     nastavenie log.0
+1     1/↑     1     nastavenie log.1
+ clear 
+
+=== Preklápací obvod JK ===
+Schematická značka hradla JK
+Schéma obvodu JK, zloženého z (hranou synchronizovaného) hradla RST a hradla AND 
+Časové priebehy signálov na obvode JK. T vyznačuje body, v ktorých došlo k negácii uloženej hodnoty (J = K = 1)
+Preklápací obvod JK je synchrónny bistabilný preklápací obvod. Je rozšírením obvodu RST. Vstup J (= S) nastavuje log.1, K (= R) nastavuje log.0. Rozšírením je interpretácia vstupnej kombinácie R = S = 1, ktorá je pri obvode RS(T) zakázaná. Obvod JK pri tejto kombinácii vstupov zneguje (preklopí, invertuje) uloženú hodnotu.
+Názov obvodu je odvodený od mena Jacka Kilbyho – elektroinžiniera, neskôr oceneného Nobelovou cenou za fyziku, ktorý v roku 1958, počas práce pre spoločnosť Texas Instruments vynašiel integrovaný obvod.
+Preklápacie obvody JK sa v praxi väčšinou vyrábajú ako synchronizované nábežnou hranou. JK sú univerzálne preklápacie obvody, ktorými je možné v prípade potreby jednoducho nahradiť preklápacie obvody typov RST, D a T.
+class="wikitable" style="text-align:center"
+Pravdivostná tabuľka obvodu JK
+J     K     C     Qn+1     pozn.
+X     X     0     Qn     zachovanie stavu (C = 0)
+0     0     1/↑     Qn     zachovanie stavu (J = K = 0)
+0     1     1/↑     0     vynulovanie (J = 0, K = 1)
+1     0     1/↑     1     nastavenie (J = 1, K = 0)
+1     1     1/↑     Qn     znegovanie stavu (J = K = 1)
+ clear 
+
+=== Preklápací obvod T ===
+Schematická značka asynchrónneho hradla T
+Schéma asynchrónneho obvodu T, zloženého z (hranou synchronizovaného) hradla RST a invertoru 
+Preklápací obvod T (z angl. Toggle – preklopiť) je bistabilný preklápací obvod s jediným vstupom T (synchrónny variant má navyše hodinový vstup). Ak je na vstupe T log.0, obvod zachováva predošlý stav. Po privedení log.1 na vstup T sa predošlý stav zneguje.
+Synchrónny obvod T je možné vytvoriť z obvodu JK prostým prepojením jeho vstupov do jediného (J = K = T). Asynchrónny obvod T je možné vytvoriť zo synchrónneho prepojením hodinového signálu so vstupom T (C = T).
+Obvod T tvorí základ čítačov a deličiek kmitočtu. Po privedení pravouhlého signálu s frekvenciou f na vstup T asynchrónneho obvodu T (prípadne na vstup C synchrónneho obvodu pri súčasnom nastavení vstupu T na log.1), dostaneme na jeho výstupe signál s frekvenciou f/2.
+class="wikitable" style="text-align:center"
+Pravdivostná tabuľka obvodu T
+T     Qn     Qn+1     pozn.
+0     0     0     zachovanie stavu
+0     1     1     zachovanie stavu
+1     0     1     znegovanie stavu
+1     1     0     znegovanie stavu
+ clear 
+
+== Schmittov preklápací obvod ==
+Schematická značka Schmittovho preklápacieho obvodu so symbolom hysterézie
+Priebeh na výstupe Schmittovho preklápacieho obvodu (B) v porovnaní s výstupom jednoduchého komparátoru (A) pri rovnakom priebehu na vstupe (U)
+(pozri samostatný článok: Schmittov preklápací obvod)
+Schmittov preklápací obvod je preklápací obvod, ktorého napätie na výstupe sa mení skokovo so zmenou napätia na vstupe, pričom zmena výstupu pri náraste napätia vstupu nastane až pri vyššom napätí než zmena výstupu pri poklese napätia vstupu. Táto vlastnosť vstupu sa nazýva hysterézia.
+Vďaka hysterézii sú tieto obvody imúnne voči superponovanému šumu na vstupe. Používajú sa ako vstupné obvody v prípadoch, keď sa do digitálneho obvodu privádza signál zvonka zariadenia, kde je možnosť, že signál bude zašumený.
+
+== Pozri aj ==
+* Sekvenčný obvod
+* Zoznam základných logických obvodov
+* Zoznam logických integrovaných obvodov CMOS radu 4000
+* Zoznam logických integrovaných obvodov TTL radu 7400
+* NE555 – všestranný integrovaný časovač, použiteľný v astabilnom, monostabilnom aj bistabilnom režime
+
+== Iné projekty ==
+ projekt commons=Category:Flip-flops 
+
+== Externé odkazy ==
+* Teória tranzistorového astabilného preklápacieho obvodu – AKO
+* Teória tranzistorového monostabilného preklápacieho obvodu – MKO
+* Teória tranzistorového bistabilného preklápacieho obvodu – BKO
+* Teória tranzistorového Schmittovho preklápacieho obvodu
+Kategória:Digitálna elektronika
+Kategória:Logické obvody            >>>>>>>>>>>>>>>>>>>>>>>

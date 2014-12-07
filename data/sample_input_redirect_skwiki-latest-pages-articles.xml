@@ -1,0 +1,525 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.9/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.9/ http://www.mediawiki.org/xml/export-0.9.xsd" version="0.9" xml:lang="sk">
+  <siteinfo>
+    <sitename>Wikipédia</sitename>
+    <dbname>skwiki</dbname>
+    <base>http://sk.wikipedia.org/wiki/Hlavn%C3%A1_str%C3%A1nka</base>
+    <generator>MediaWiki 1.24wmf19</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Médiá</namespace>
+      <namespace key="-1" case="first-letter">Špeciálne</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Diskusia</namespace>
+      <namespace key="2" case="first-letter">Redaktor</namespace>
+      <namespace key="3" case="first-letter">Diskusia s redaktorom</namespace>
+      <namespace key="4" case="first-letter">Wikipédia</namespace>
+      <namespace key="5" case="first-letter">Diskusia k Wikipédii</namespace>
+      <namespace key="6" case="first-letter">Súbor</namespace>
+      <namespace key="7" case="first-letter">Diskusia k súboru</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">Diskusia k MediaWiki</namespace>
+      <namespace key="10" case="first-letter">Šablóna</namespace>
+      <namespace key="11" case="first-letter">Diskusia k šablóne</namespace>
+      <namespace key="12" case="first-letter">Pomoc</namespace>
+      <namespace key="13" case="first-letter">Diskusia k pomoci</namespace>
+      <namespace key="14" case="first-letter">Kategória</namespace>
+      <namespace key="15" case="first-letter">Diskusia ku kategórii</namespace>
+      <namespace key="100" case="first-letter">Portál</namespace>
+      <namespace key="101" case="first-letter">Diskusia k portálu</namespace>
+      <namespace key="828" case="first-letter">Modul</namespace>
+      <namespace key="829" case="first-letter">Diskusia k modulu</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Klopný obvod</title>
+    <ns>0</ns>
+    <id>69051</id>
+    <redirect title="Preklápací obvod" />
+    <revision>
+      <id>1453765</id>
+      <parentid>340502</parentid>
+      <timestamp>2008-03-06T22:07:29Z</timestamp>
+      <contributor>
+        <username>Teslaton</username>
+        <id>12161</id>
+      </contributor>
+      <comment>#REDIRECT [[Preklápací obvod]]</comment>
+      <text xml:space="preserve">#REDIRECT [[Preklápací obvod]]</text>
+      <sha1>stp9sz4gz4pg3fudgv3ac21hvopjzos</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Preklápací obvod RS</title>
+    <ns>0</ns>
+    <id>203817</id>
+    <redirect title="Preklápací obvod" />
+    <revision>
+      <id>1453741</id>
+      <timestamp>2008-03-06T22:00:15Z</timestamp>
+      <contributor>
+        <username>Teslaton</username>
+        <id>12161</id>
+      </contributor>
+      <comment>#REDIRECT [[Preklápací obvod#Preklápací obvod RS]]</comment>
+      <text xml:space="preserve">#REDIRECT [[Preklápací obvod#Preklápací obvod RS]]</text>
+      <sha1>1o4yg52xpx8wenfhj1qcw6qdpsppzf5</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Preklápací obvod RST</title>
+    <ns>0</ns>
+    <id>203818</id>
+    <redirect title="Preklápací obvod" />
+    <revision>
+      <id>1453750</id>
+      <timestamp>2008-03-06T22:03:12Z</timestamp>
+      <contributor>
+        <username>Teslaton</username>
+        <id>12161</id>
+      </contributor>
+      <comment>#REDIRECT [[Preklápací obvod#Preklápací obvod RST]]</comment>
+      <text xml:space="preserve">#REDIRECT [[Preklápací obvod#Preklápací obvod RST]]</text>
+      <sha1>0lc3ihuer60b6x7yw9nc4sbwof0ocqg</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Preklápací obvod D</title>
+    <ns>0</ns>
+    <id>203819</id>
+    <redirect title="Preklápací obvod" />
+    <revision>
+      <id>1453751</id>
+      <timestamp>2008-03-06T22:03:34Z</timestamp>
+      <contributor>
+        <username>Teslaton</username>
+        <id>12161</id>
+      </contributor>
+      <comment>#REDIRECT [[Preklápací obvod#Preklápací obvod D]]</comment>
+      <text xml:space="preserve">#REDIRECT [[Preklápací obvod#Preklápací obvod D]]</text>
+      <sha1>3z6nbhzwz0ok4db1tptpln1qhiermdb</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Preklápací obvod JK</title>
+    <ns>0</ns>
+    <id>203820</id>
+    <redirect title="Preklápací obvod" />
+    <revision>
+      <id>1453755</id>
+      <timestamp>2008-03-06T22:04:48Z</timestamp>
+      <contributor>
+        <username>Teslaton</username>
+        <id>12161</id>
+      </contributor>
+      <comment>#REDIRECT [[Preklápací obvod#Preklápací obvod JK]]</comment>
+      <text xml:space="preserve">#REDIRECT [[Preklápací obvod#Preklápací obvod JK]]</text>
+      <sha1>f3fxe1uggi0zgob14me4shtges73oo8</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Preklápací obvod T</title>
+    <ns>0</ns>
+    <id>203821</id>
+    <redirect title="Preklápací obvod" />
+    <revision>
+      <id>1453756</id>
+      <timestamp>2008-03-06T22:05:14Z</timestamp>
+      <contributor>
+        <username>Teslaton</username>
+        <id>12161</id>
+      </contributor>
+      <comment>#REDIRECT [[Preklápací obvod#Preklápací obvod T]]</comment>
+      <text xml:space="preserve">#REDIRECT [[Preklápací obvod#Preklápací obvod T]]</text>
+      <sha1>nkipc18qtx7yylmt7bdprgj2sc1qe7h</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Astabilný preklápací obvod</title>
+    <ns>0</ns>
+    <id>203828</id>
+    <redirect title="Preklápací obvod" />
+    <revision>
+      <id>1453772</id>
+      <timestamp>2008-03-06T22:13:00Z</timestamp>
+      <contributor>
+        <username>Teslaton</username>
+        <id>12161</id>
+      </contributor>
+      <comment>#REDIRECT [[Preklápací obvod#Astabilný preklápací obvod]]</comment>
+      <text xml:space="preserve">#REDIRECT [[Preklápací obvod#Astabilný preklápací obvod]]</text>
+      <sha1>kpjq6ek3yle09wdowk6w8krmrq2kiie</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Astabilný klopný obvod</title>
+    <ns>0</ns>
+    <id>203829</id>
+    <redirect title="Preklápací obvod" />
+    <revision>
+      <id>1453773</id>
+      <timestamp>2008-03-06T22:13:22Z</timestamp>
+      <contributor>
+        <username>Teslaton</username>
+        <id>12161</id>
+      </contributor>
+      <comment>#REDIRECT [[Preklápací obvod#Astabilný preklápací obvod]]</comment>
+      <text xml:space="preserve">#REDIRECT [[Preklápací obvod#Astabilný preklápací obvod]]</text>
+      <sha1>kpjq6ek3yle09wdowk6w8krmrq2kiie</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Monostabilný preklápací obvod</title>
+    <ns>0</ns>
+    <id>203830</id>
+    <redirect title="Preklápací obvod" />
+    <revision>
+      <id>1453774</id>
+      <timestamp>2008-03-06T22:13:52Z</timestamp>
+      <contributor>
+        <username>Teslaton</username>
+        <id>12161</id>
+      </contributor>
+      <comment>#REDIRECT [[Preklápací obvod#Monostabilný preklápací obvod]]</comment>
+      <text xml:space="preserve">#REDIRECT [[Preklápací obvod#Monostabilný preklápací obvod]]</text>
+      <sha1>0ron9mbr58dtcjtwp1ox19q24nyizer</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Monostabilný klopný obvod</title>
+    <ns>0</ns>
+    <id>203831</id>
+    <redirect title="Preklápací obvod" />
+    <revision>
+      <id>1453775</id>
+      <timestamp>2008-03-06T22:14:07Z</timestamp>
+      <contributor>
+        <username>Teslaton</username>
+        <id>12161</id>
+      </contributor>
+      <comment>#REDIRECT [[Preklápací obvod#Monostabilný preklápací obvod]]</comment>
+      <text xml:space="preserve">#REDIRECT [[Preklápací obvod#Monostabilný preklápací obvod]]</text>
+      <sha1>0ron9mbr58dtcjtwp1ox19q24nyizer</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Bistabilný preklápací obvod</title>
+    <ns>0</ns>
+    <id>203832</id>
+    <redirect title="Preklápací obvod" />
+    <revision>
+      <id>1453777</id>
+      <timestamp>2008-03-06T22:14:22Z</timestamp>
+      <contributor>
+        <username>Teslaton</username>
+        <id>12161</id>
+      </contributor>
+      <comment>#REDIRECT [[Preklápací obvod#Bistabilný preklápací obvod]]</comment>
+      <text xml:space="preserve">#REDIRECT [[Preklápací obvod#Bistabilný preklápací obvod]]</text>
+      <sha1>2dqmp8s5tzikeg6ehrxf087icxgbe04</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Bistabilný klopný obvod</title>
+    <ns>0</ns>
+    <id>203833</id>
+    <redirect title="Preklápací obvod" />
+    <revision>
+      <id>1453778</id>
+      <timestamp>2008-03-06T22:14:37Z</timestamp>
+      <contributor>
+        <username>Teslaton</username>
+        <id>12161</id>
+      </contributor>
+      <comment>#REDIRECT [[Preklápací obvod#Bistabilný preklápací obvod]]</comment>
+      <text xml:space="preserve">#REDIRECT [[Preklápací obvod#Bistabilný preklápací obvod]]</text>
+      <sha1>2dqmp8s5tzikeg6ehrxf087icxgbe04</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+  <page>
+    <title>Preklápací obvod</title>
+    <ns>0</ns>
+    <id>69439</id>
+    <revision>
+      <id>5665580</id>
+      <parentid>5665576</parentid>
+      <timestamp>2013-12-11T10:12:06Z</timestamp>
+      <contributor>
+        <username>Tchoř</username>
+        <id>17754</id>
+      </contributor>
+      <minor />
+      <comment>Verzia používateľa [[Special:Contributions/194.160.224.2|194.160.224.2]] ([[User_talk:194.160.224.2|diskusia]]) bola vrátená, bola obnovená verzia od Panda sk</comment>
+      <text xml:space="preserve">'''Preklápací obvod''' (alebo bežnejšie, hoci nespisovne '''klopný obvod''', skr. '''KO''') je [[elektronika|elektronický]] obvod s niekoľkými ''stabilnými'' alebo ''nestabilnými'' ''stavmi'', medzi ktorými sa dokáže (na základe zmeny elektrickej veličiny na niektorom vstupe alebo vnútornej spätnej väzby) prepínať – ''preklápať''. Skladá sa z niekoľkých tranzistorov, [[Logické hradlo|logických hradiel]], alebo iných [[Aktívna elektronická súčiastka|aktívnych súčiastok]]. 
+
+Preklápacie obvody majú v elektronike široké využitie ako generátory impulzov, [[oscilátor]]y, [[SRAM|statické pamäte]], oneskorovače, [[časovač]]e, [[čítač]]e, deliče kmitočtu a pod. Na preklápacích obvodoch sú založené [[Sekvenčný obvod|sekvenčné digitálne obvody]], tvoriace základ digitálnych [[počítač]]ov.
+
+== Delenie preklápacích obvodov ==
+
+Podľa stavov:
+* '''astabilné''': dva nestabilné stavy, žiaden stabilný
+* '''monostabilné''': jeden stabilný, jeden nestabilný stav
+* '''bistabilné''': dva stabilné stavy, žiaden nestabilný
+
+[[Súbor:Flip-flop synchronization types schematic.svg|thumb|right|Spôsoby značenia hodinového vstupu hradla s preklápacím obvodom podľa typu synchronizácie: '''1.''' úrovňou, '''2.''' nábežnou hranou, '''3.''' úbežnou hranou]]
+
+Podľa existencie synchronizácie:
+* '''asynchrónne''' (alebo tiež '''transparentné'''): preklopia sa ihneď po zmene úrovne na niektorom riadiacom vstupe&lt;br /&gt;(angl. ''Latch'' alebo ''Transparent latch'')
+* '''synchrónne''': preklopia sa len v súčinnosti so synchronizačným (''hodinovým'', ''taktovacím'') vstupom, ktorý (úrovňou alebo zmenou úrovne) povoľuje reakciu obvodu na riadiace vstupy&lt;br /&gt;(angl. ''Gated latch'', ''Clocked latch'', alebo ''Flip-flop'' podľa typu synchronizácie, pozri nižšie)
+
+Podľa typu synchronizácie (týka sa len synchrónnych preklápacích obvodov):
+* synchronizácia '''úrovňou''' hodinového signálu (úrovňová alebo hladinová synchronizácia) (angl. ''Gated latch'' alebo ''Clocked latch'')
+* synchronizácia '''nábežnou hranou''' hodinového signálu (derivačná synchronizácia) (angl. ''Positive edge triggered flip-flop'')
+* synchronizácia '''úbežnou hranou''' hodinového signálu (derivačná synchronizácia) (angl. ''Negative edge triggered flip-flop'')
+
+Podľa funkcie (týka sa len bistabilných preklápacích obvodov):
+* '''RS''', '''RST''', '''D''', '''JK''', '''T''', '''Schmittov preklápací obvod'''
+
+== Astabilný preklápací obvod ==
+
+[[Súbor:Transistor Multivibrator.svg|thumb|right|120px|Tranzistorový AKO – multivibrátor]]
+
+'''Astabilný preklápací obvod''' (skr. '''AKO''') alebo '''multivibrátor''' nemá žiaden stabilný stav a neustále sa preklápa medzi dvoma nestabilnými stavmi. 
+
+Doby, po ktoré obvod zotrváva v jednotlivých stavoch (a tým aj [[kmitočet|frekvencia]] a [[strieda]] generovaného signálu) sú v najjednoduchšom prípade definované časovými konštantami [[RC obvod]]ov, zložených z [[rezistor]]u a [[kondenzátor]]a (na obr. vpravo sú to R2-C1, R3-C2). Preklápací obvod môže byť symetrický (rovnaké časové konštanty pre oba stavy, AKO generuje pravouhlé impulzy so striedou 1:1) alebo asymetrický (strieda iná než 1:1). V prípade vyšších nárokov na stabilitu frekvencie je možné v obvode spätnej väzby preklápacieho obvodu použiť [[kryštál (elektronika)|kryštálový výbrus]].
+
+Tento typ preklápacieho obvodu sa používa napr. ako generátor impulzov.
+
+{{clear}}
+
+== Monostabilný preklápací obvod ==
+
+[[Súbor:Transistor Monostable.svg|thumb|right|120px|Tranzistorový MKO]]
+
+'''Monostabilný preklápací obvod''' (skr. '''MKO''') má jeden stabilný stav, z ktorého je možné ho vstupom preklopiť do nestabilného stavu. Obvod sa sám po určitom čase preklopí naspäť do stabilného stavu. 
+
+Oneskorenie je zvyčajne definované časovou konštantou [[RC obvod]]u, zloženého z [[rezistor]]u a [[kondenzátor]]a (na obr. vpravo je to R2-C1). Po preklopení obvodu do nestabilného stavu sa kondenzátor začne cez rezistor nabíjať a po dosiahnutí určitého prahového napätia sa obvod preklopí späť do stabilného stavu, kondenzátor sa vybije a celý proces sa môže zopakovať.
+
+Tento typ obvodu sa využíva napr. ako oneskorovací obvod (typický príklad: ošetrenie zákmitov pri stlačení mechanického spínača) alebo časovač.
+
+{{clear}}
+
+== Bistabilný preklápací obvod ==
+
+[[Súbor:Transistor Bistable interactive animated EN.svg|thumb|right|Tranzistorový BKO typu RS]]
+
+'''Bistabilný preklápací obvod''' (skr. '''BKO''') sa môže nachádzať v jednom z dvoch stabilných stavov. Vstupmi obvodu je možné ho medzi týmito stavmi ľubovoľne preklápať.
+
+Tento typ preklápacieho obvodu slúži ako základ registrov, statických pamätí, čítačov a deličiek kmitočtu.
+
+{{clear}}
+
+=== Preklápací obvod RS ===
+
+[[Súbor:Flipflop SR0.svg|left|64px|Schematická značka hradla RS]]
+[[Súbor:SR Flip-flop Diagram.svg|thumb|Schéma obvodu RS, zloženého z hradiel [[hradlo NOR|NOR]]. Vstupy R a S sú v tomto prípade negované – aktívne v log.0. ]]
+
+'''Preklápací obvod RS''' (angl. ''SR latch'') je najjednoduchší asynchrónny bistabilný preklápací obvod. Má dva vstupy: '''R''' (z angl. ''Reset'' – nulovanie) a '''S''' (z angl. ''Set'' – nastavenie). Uložená hodnota je k dispozícii na výstupe '''Q'''. Obvykle je k dispozícii tiež negovaný výstup '''&lt;span style=&quot;text-decoration: overline;&quot;&gt;Q&lt;/span&gt;'''. 
+
+Základný stav oboch vstupov je log.0. V tomto režime si obvod pamätá naposledy nastavenú hodnotu. Privedením log.1 na vstup S sa obvod nastaví (Q  =  log.1) a vďaka vnútornej spätnej väzbe zostane nastavený aj po návrate vstupu S na log.0. Privedením log.1 na vstup R sa vynuluje (Q  =  log.0) a rovnako zostane vynulovaný aj po návrate R na log.0. Kombinácia R = S = log.1 sa nazýva ''zakázaný'' (alebo tiež nestabilný, hazardný) stav, pretože pri ňom nie je definované v akom stave zostane obvod po návrate R a S na log.0.
+
+{| class=&quot;wikitable&quot; style=&quot;text-align:center&quot;
+! colspan=&quot;5&quot;|Pravdivostná tabuľka obvodu RS
+|-
+!S!!R!!Q&lt;sub&gt;n+1&lt;/sub&gt;!!pozn.
+|-
+|0||0||Q&lt;sub&gt;n&lt;/sub&gt;||zachovanie stavu
+|-
+|0||1||0||vynulovanie
+|-
+|1||0||1||nastavenie
+|-
+|1||1||?||zakázaný stav
+|}
+
+{{clear}}
+
+=== Preklápací obvod RST ===
+
+[[Súbor: Flipflop SR3.svg|left|64px|Schematická značka hradla RST (synchronizovaného úrovňou)]]
+[[Súbor:Flipflop SR4.svg|thumb|Schéma obvodu RST, zloženého z hradiel [[hradlo NOR|NOR]] a [[hradlo AND|AND]]. Ak je na hodinovom vstupe C log.0, hradlá AND blokujú vstupy R a S.]]
+[[Súbor:SR FF timing diagram.png|thumb|Časové priebehy signálov na obvode RST. Červený priebeh: výstup hranou synchronizovaného variantu obvodu]]
+
+'''Preklápací obvod RST'''  (angl. ''Gated SR latch'') je ''synchrónny'' variant obvodu RS. Princíp zostáva zachovaný, ale k preklopeniu obvodu dochádza len v konkrétnych prípadoch, v závislosti od hodnoty signálu na hodinovom vstupe '''T''' (alebo častejšie '''C''' z angl. ''Clock'' – hodiny). Obvod RST je synchronizovaný úrovňou (hladinová synchronizácia) hodinového signálu – stav je možné meniť po celú dobu trvania hodinového impulzu.
+
+{| class=&quot;wikitable&quot; style=&quot;text-align:center&quot;
+! colspan=&quot;5&quot;|Pravdivostná tabuľka obvodu RST
+|-
+!S!!R!!C!!Q&lt;sub&gt;n+1&lt;/sub&gt;!!pozn.
+|-
+|X||X||0||Q&lt;sub&gt;n&lt;/sub&gt;||zachovanie stavu
+|-
+|0||0||1||Q&lt;sub&gt;n&lt;/sub&gt;||zachovanie stavu
+|-
+|0||1||1||0||vynulovanie
+|-
+|1||0||1||1||nastavenie
+|-
+|1||1||1||?||zakázaný stav
+|}
+
+{{clear}}
+
+=== Preklápací obvod D ===
+
+[[Súbor:Flipflop D0.svg|left|64px|Schematická značka hradla D (hranou synchronizovaného)]]
+[[Súbor:Flipflop D2.svg|thumb|Schéma obvodu D, zloženého z hradla RST a [[hradlo NOT|invertoru]] (v tomto prípade je synchronizovaný úrovňou) ]]
+[[Súbor:D-Type Flip-flop.svg|thumb| Schematická značka hradla D so synchronizáciou nábežnou hranou a vyvedenými vstupmi R a S]]
+
+'''Preklápací obvod D''' (z angl. ''Delay'' – zdržanie) je synchrónny bistabilný preklápací obvod so vstupom '''D''' (''Data'') a hodinovým vstupom '''C''' (''Clock''). Obvod realizuje 1-bitovú pamäť. Pri nábežnej hrane hodinového signálu sa momentálna hodnota vstupu D skopíruje do vnútorného stavu a na výstup, kde zostane zachovaná až do nasledovnej nábežnej hrany hodinového signálu.
+
+Jednoduchý preklápací obvod D je možné zostaviť z obvodu RST tak, že na vstup S privedieme priamo hodnotu vstupu D a na vstup R jeho negovanú hodnotu (pozri obr.). Obvod sa potom pri log.1 na vstupe D nastaví a naopak pri log.0 vynuluje.
+
+Preklápacie obvody D sa v praxi väčšinou vyrábajú so synchronizáciou nábežnou hranou hodinového signálu. Mávajú tiež často okrem vstupu D vyvedené aj vstupy R a S, umožňujúce nastavenie a nulovanie obvodu (synchrónne alebo asynchrónne).
+
+Preklápacie obvody D tvoria základ [[posuvný register|posuvných registrov]].
+
+{| class=&quot;wikitable&quot; style=&quot;text-align:center&quot;
+! colspan=&quot;5&quot;|Pravdivostná tabuľka obvodu D
+|-
+!D!!C!!Q&lt;sub&gt;n+1&lt;/sub&gt;!!pozn.
+|-
+|X||0||Q&lt;sub&gt;n&lt;/sub&gt;||zachovanie stavu
+|-
+|0||1/↑||0||nastavenie log.0
+|-
+|1||1/↑||1||nastavenie log.1
+|}
+
+{{clear}}
+
+=== Preklápací obvod JK ===
+
+[[Súbor:Flipflop JK0.svg|left|64px|Schematická značka hradla JK]]
+[[Súbor:Flipflop JK1.svg|thumb|Schéma obvodu JK, zloženého z (hranou synchronizovaného) hradla RST a hradla [[hradlo AND|AND]] ]]
+[[Súbor:JK FF impulse diagram.png|thumb|Časové priebehy signálov na obvode JK. T vyznačuje body, v ktorých došlo k negácii uloženej hodnoty (J = K = 1)]]
+
+'''Preklápací obvod JK''' je synchrónny bistabilný preklápací obvod. Je rozšírením obvodu RST. Vstup '''J''' (= S) nastavuje log.1, '''K''' (= R) nastavuje log.0. Rozšírením je interpretácia vstupnej kombinácie R = S = 1, ktorá je pri obvode RS(T) zakázaná. Obvod JK pri tejto kombinácii vstupov [[negácia|zneguje]] (preklopí, invertuje) uloženú hodnotu.
+
+Názov obvodu je odvodený od mena [[Jack Kilby|Jacka Kilbyho]] – elektroinžiniera, neskôr oceneného Nobelovou cenou za fyziku, ktorý v roku [[1958]], počas práce pre spoločnosť [[Texas Instruments]] vynašiel [[integrovaný obvod]].
+
+Preklápacie obvody JK sa v praxi väčšinou vyrábajú ako synchronizované nábežnou hranou. JK sú univerzálne preklápacie obvody, ktorými je možné v prípade potreby jednoducho nahradiť preklápacie obvody typov RST, D a T.
+
+{| class=&quot;wikitable&quot; style=&quot;text-align:center&quot;
+! colspan=&quot;5&quot;|Pravdivostná tabuľka obvodu JK
+|-
+!J!!K!!C!!Q&lt;sub&gt;n+1&lt;/sub&gt;!!pozn.
+|-
+|X||X||0||Q&lt;sub&gt;n&lt;/sub&gt;||zachovanie stavu (C = 0)
+|-
+|0||0||1/↑||Q&lt;sub&gt;n&lt;/sub&gt;||zachovanie stavu (J = K = 0)
+|-
+|0||1||1/↑||0||vynulovanie (J = 0, K = 1)
+|-
+|1||0||1/↑||1||nastavenie (J = 1, K = 0)
+|-
+|1||1||1/↑||!Q&lt;sub&gt;n&lt;/sub&gt;||znegovanie stavu (J = K = 1)
+|}
+
+{{clear}}
+
+=== Preklápací obvod T ===
+
+[[Súbor:Flipflop T0.svg|left|64px|Schematická značka asynchrónneho hradla T]]
+[[Súbor:Flipflop T2.svg|thumb|Schéma asynchrónneho obvodu T, zloženého z (hranou synchronizovaného) hradla RST a [[hradlo NOT|invertoru]] ]]
+
+'''Preklápací obvod T''' (z angl. ''Toggle'' – preklopiť) je bistabilný preklápací obvod s jediným vstupom '''T''' (synchrónny variant má navyše hodinový vstup). Ak je na vstupe T log.0, obvod zachováva predošlý stav. Po privedení log.1 na vstup T sa predošlý stav zneguje.
+
+Synchrónny obvod T je možné vytvoriť z obvodu JK prostým prepojením jeho vstupov do jediného (J = K = T). Asynchrónny obvod T je možné vytvoriť zo synchrónneho prepojením hodinového signálu so vstupom T (C = T).
+
+Obvod T tvorí základ čítačov a deličiek kmitočtu. Po privedení pravouhlého signálu s frekvenciou ''f'' na vstup T asynchrónneho obvodu T (prípadne na vstup C synchrónneho obvodu pri súčasnom nastavení vstupu T na log.1), dostaneme na jeho výstupe signál s frekvenciou ''f/2''.
+
+{| class=&quot;wikitable&quot; style=&quot;text-align:center&quot;
+! colspan=&quot;5&quot;|Pravdivostná tabuľka obvodu T
+|-
+!T!!Q&lt;sub&gt;n&lt;/sub&gt;!!Q&lt;sub&gt;n+1&lt;/sub&gt;!!pozn.
+|-
+|0||0||0||zachovanie stavu
+|-
+|0||1||1||zachovanie stavu
+|-
+|1||0||1||znegovanie stavu
+|-
+|1||1||0||znegovanie stavu
+|}
+
+{{clear}}
+
+== Schmittov preklápací obvod ==
+
+[[Súbor:Schmitt trigger symbol.svg|left|64px|Schematická značka Schmittovho preklápacieho obvodu so symbolom hysterézie]]
+[[Súbor:Smitt hysteresis graph.svg|thumb|Priebeh na výstupe Schmittovho preklápacieho obvodu ('''B''') v porovnaní s výstupom jednoduchého komparátoru ('''A''') pri rovnakom priebehu na vstupe ('''U''')]]
+(pozri samostatný článok: [[Schmittov preklápací obvod]])
+
+'''Schmittov preklápací obvod''' je preklápací obvod, ktorého [[elektrické napätie|napätie]] na výstupe sa mení skokovo so zmenou napätia na vstupe, pričom zmena výstupu pri náraste napätia vstupu nastane až pri vyššom napätí než zmena výstupu pri poklese napätia vstupu. Táto vlastnosť vstupu sa nazýva [[hysterézia]].
+
+Vďaka hysterézii sú tieto obvody imúnne voči superponovanému šumu na vstupe. Používajú sa ako vstupné obvody v prípadoch, keď sa do digitálneho obvodu privádza signál zvonka zariadenia, kde je možnosť, že signál bude zašumený.
+
+== Pozri aj ==
+* [[Sekvenčný obvod]]
+* [[Zoznam základných logických obvodov]]
+* [[Zoznam logických integrovaných obvodov CMOS radu 4000]]
+* [[Zoznam logických integrovaných obvodov TTL radu 7400]]
+* [[NE555|NE555 – všestranný integrovaný časovač, použiteľný v astabilnom, monostabilnom aj bistabilnom režime]]
+
+== Iné projekty ==
+{{projekt|commons=Category:Flip-flops}}
+
+== Externé odkazy ==
+* [http://alzat.spseke.sk/Oscilat/generato/ako/ako.htm Teória tranzistorového astabilného preklápacieho obvodu – AKO]
+* [http://alzat.spseke.sk/Oscilat/generato/mko/mko.htm Teória tranzistorového monostabilného preklápacieho obvodu – MKO]
+* [http://alzat.spseke.sk/Oscilat/generato/bko/bko.htm Teória tranzistorového bistabilného preklápacieho obvodu – BKO]
+* [http://alzat.spseke.sk/Oscilat/sko/sko.htm Teória tranzistorového Schmittovho preklápacieho obvodu]
+
+[[Kategória:Digitálna elektronika]]
+[[Kategória:Logické obvody]]</text>
+      <sha1>hawb0luwk67qaf6hcc1exb3yecizpyk</sha1>
+      <model>wikitext</model>
+      <format>text/x-wiki</format>
+    </revision>
+  </page>
+</mediawiki>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
